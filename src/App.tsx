@@ -1,11 +1,16 @@
+import { Provider } from 'react-redux'
+import store from './store'
 import React from 'react'
 import ProductComponent from './components/product/ProductComponent'
 
 const App = () => {
+
+
     return (
-        <div>
+        <Provider store={store}><div>
             <ProductComponent />
-        </div>
+        </div></Provider>
+
     )
 }
 
