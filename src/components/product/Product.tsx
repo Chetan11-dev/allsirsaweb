@@ -1,21 +1,23 @@
-import Alert from 'react-bootstrap/Alert'
-
+import { connect } from 'react-redux'
 import * as React from 'react'
-import { ProductModel } from '../../models/ModelProduct'
-import Button from 'react-bootstrap/Button'
-
-export interface Props {
-    product: ProductModel
-}
+import { setAlert } from '../../actions/alert'
 
 
-export const Product = (props: Props) => {
+
+
+const Product = (props: any) => {
     // Extract props
-    const { subcategory, unit, variations, productimage, category, title, sid } = props.product
+    // props.setAlert('hari' , '')
+
+    props.setAlert({
+        alertType: 'success', msg: 'Success'
+    })
 
     return (
         <div data-test="headerComponent">
-            { 'Received as props '+ JSON.stringify(props.product)}
+            {'Received as props ' + JSON.stringify(props.product)}
         </div>
     )
 }
+
+export default connect(null, { setAlert })(Product)
