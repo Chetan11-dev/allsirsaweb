@@ -26,6 +26,7 @@ export const product: ProductModel = {
 
 test('should display a product', async () => {
   let component = shallow(<Product product={product} />)
-  const wrapper = findByTestAtrr(component, 'headerComponent')
+  const wrapper = findByTestAtrr(component, 'product')
+  console.log(wrapper.debug())
   expect(wrapper.length).toBe(1)
 })

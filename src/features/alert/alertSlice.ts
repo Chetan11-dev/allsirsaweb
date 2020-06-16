@@ -14,7 +14,7 @@ interface AlertState {
     alerts: AlertInfo[]
 }
 
-const initialState: AlertState = {
+export const initialState: AlertState = {
     alerts: [],
 }
 
@@ -32,7 +32,7 @@ export const alertSlice = createSlice({
     },
 })
 
-const { hideAlert, showAlert } = alertSlice.actions
+export const { hideAlert, showAlert } = alertSlice.actions
 
 export function setAlert(alertInfo: AlertInfo, dispatch: Dispatch<any>) {
     const id = uuidv4()
@@ -45,7 +45,6 @@ export function setAlert(alertInfo: AlertInfo, dispatch: Dispatch<any>) {
 
 export const selectAlert = (state: RootState) => {
     console.log(state)
-
     return state.alert
 }
 
