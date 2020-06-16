@@ -1,6 +1,8 @@
 import React from 'react'
 import { ProductModel } from '../../models/ModelProduct'
 import Product from './Product'
+import { selectAlert } from '../../features/alert/alertSlice'
+import { useSelector } from 'react-redux'
 
 
 export const product: ProductModel = {
@@ -15,8 +17,11 @@ export const product: ProductModel = {
 
 export const ProductComponent = () => {
 
+    const a = useSelector(
+        selectAlert
 
-
+        
+    )
     return (
         <Product product={product} />
     )

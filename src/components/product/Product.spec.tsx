@@ -1,5 +1,5 @@
 
-import { Product } from './Product'
+import Product  from './Product'
 // import { product } from './ProductComponent'
 import { shallow } from 'enzyme'
 import React from 'react'

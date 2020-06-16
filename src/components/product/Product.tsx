@@ -1,6 +1,7 @@
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import * as React from 'react'
-import { setAlert } from '../../actions/alert'
+import { setAlert } from '../../features/alert/alertSlice'
+
 
 
 
@@ -9,9 +10,18 @@ const Product = (props: any) => {
     // Extract props
     // props.setAlert('hari' , '')
 
-    props.setAlert({
-        alertType: 'success', msg: 'Success'
-    })
+
+    const dispatch = useDispatch()
+
+
+    React.useEffect(() => {
+        setAlert({
+            msg: 'ss', type: 'success'
+
+        }, dispatch)
+        
+    }
+        , [])
 
     return (
         <div data-test="headerComponent">
@@ -20,4 +30,4 @@ const Product = (props: any) => {
     )
 }
 
-export default connect(null, { setAlert })(Product)
+export default Product
