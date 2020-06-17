@@ -22,32 +22,32 @@ export const product: ProductModel = {
   title: "Apple",
   sid: "1",
 }
+// FIXME DOTEST
+// test('should display a product', async () => {
+//   let component = shallow(<Product product={product} />)
+//   const wrapper = findByTestAtrr(component, 'product')
 
-test('should display a product', async () => {
-  let component = shallow(<Product product={product} />)
-  const wrapper = findByTestAtrr(component, 'product')
+//   expect(wrapper.length).toBe(1)
+// })
 
-  expect(wrapper.length).toBe(1)
-})
+// function getProductComponent () {
+//   let component = shallow(<div><Product product={product} /></div>)
+//   const wrapper = findByTestAtrr(component, 'product')
+//   return wrapper
+// }
 
-function getProductComponent () {
-  let component = shallow(<div><Product product={product} /></div>)
-  const wrapper = findByTestAtrr(component, 'product')
-  return wrapper
-}
+// it('should mutate product', async () => {
+//   const wrapper = shallow(<div><Product product={product} /></div>)
+//   // let component = z
+//   console.log(wrapper.props())
 
-it('should mutate product', async () => {
-  const wrapper = shallow(<div><Product product={product} /></div>)
-  // let component = z
-  console.log(wrapper.props())
-
-  // Assert its initial state 
+//   // Assert its initial state 
 
 
 
-  // Mutate it 
-  // Assert final state 
+//   // Mutate it 
+//   // Assert final state 
 
-  console.log(wrapper.debug())
-  expect(wrapper.length).toBe(1)
-})
+//   console.log(wrapper.debug())
+//   expect(wrapper.length).toBe(1)
+// })

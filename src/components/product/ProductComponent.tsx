@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux'
 import { ModelCategoryList } from '../../api/models/ModelCategory'
 import { CategoryApi } from '../../api/databaseApi/categoryApi'
 import { Loader } from '../../features/loader/Loader'
-import { timer100, timer500 } from '../../utils/asynUtils'
-
+import { timer100, timer500, timer400 } from '../../utils/asynUtils'
+import { logo, logt } from '../../utils/apputils'
+import beautify from 'js-beautify'
 
 
 interface Props {
@@ -26,15 +27,16 @@ export const product: ProductModel = {
 }
 
 export const ProductComponent = () => {
-
-    useEffect(() => {
-        // CategoryApi().
-    }, [])
-
-    
+    const api = new CategoryApi()
     return (
-        <Loader operation={timer500} onSuccess={() => (<h1>Success</h1>)} />
-        // <Product product={product} />
+        <div>
+            <Loader operation={api.getDataCollection} onSuccess={(a) => {
+                // TODO solve onsucess called twice use  to know console.count('onSuccess')
+                return <Product product={product} categorylist={a} />
+
+            }} />
+        </div>
+
     )
 }
 
