@@ -59,20 +59,10 @@ const Product = (props: Props) => {
                 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
             </DropdownButton>
 
-            <Loader operation={timer} onSuccess={() => (<h1>Success</h1>)} />
+            
         </div>
 
     )
-}
-export function wait(timeout: number) {
-    return new Promise(resolve => {
-        setTimeout(resolve, timeout)
-    })
-}
-
-export async function timer() {
-    await wait(1000)
-    throw 'ss'
 }
 
 export default Product

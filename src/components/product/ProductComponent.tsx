@@ -4,7 +4,10 @@ import Product from './Product'
 import { selectAlert } from '../../features/alert/alertSlice'
 import { useSelector } from 'react-redux'
 import { ModelCategoryList } from '../../api/models/ModelCategory'
-import { CategoryApi } from '../../api/databaseApi/categoryApi';
+import { CategoryApi } from '../../api/databaseApi/categoryApi'
+import { Loader } from '../../features/loader/Loader'
+import { timer100, timer500 } from '../../utils/asynUtils'
+
 
 
 interface Props {
@@ -28,10 +31,10 @@ export const ProductComponent = () => {
         // CategoryApi().
     }, [])
 
+    
     return (
-
-        <Product product={product} />
-
+        <Loader operation={timer500} onSuccess={() => (<h1>Success</h1>)} />
+        // <Product product={product} />
     )
 }
 
