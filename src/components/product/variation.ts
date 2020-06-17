@@ -7,7 +7,6 @@ function splitTrim(s: string, split: string): string[] {
     return s.split(split.trim()).map((v) => v.trim())
 }
 
-
 export function isValidVariation(params: string) {
     const ls = splitTrim(params, '-')
     const [value, price] = ls

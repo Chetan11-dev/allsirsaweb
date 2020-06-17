@@ -15,8 +15,6 @@ it(
 
     })
 
-
-
 it(
     'variationtostring', () => {
         expect(variationsToString([{ price: 50, value: 1 }, { price: 178, value: 2 }])).toStrictEqual('1-50,2-178')

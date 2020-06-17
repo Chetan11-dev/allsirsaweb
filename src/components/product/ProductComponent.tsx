@@ -16,7 +16,7 @@ interface Props {
     catlist: ModelCategoryList
 }
 
-export const product: ProductModel = {
+export var product: ProductModel = {
     subcategory: "Fruits",
     unit: 'g',
     variations: [],
@@ -28,11 +28,16 @@ export const product: ProductModel = {
 
 export const ProductComponent = () => {
     const api = new CategoryApi()
+
+    function productChanged(p:ProductModel) {
+        product = p 
+        console.table(product);
+    }
     return (
         <div>
             <Loader operation={api.getDataCollection} onSuccess={(a) => {
                 // TODO solve onsucess called twice use  to know console.count('onSuccess')
-                return <Product product={product} categorylist={a} />
+                return <Product onChange={productChanged} product={product} categorylist={a} />
 
             }} />
         </div>

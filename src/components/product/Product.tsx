@@ -1,23 +1,17 @@
-import { v4 as uuidv4 } from 'uuid'
-import { connect, useDispatch, useSelector } from 'react-redux'
 import * as React from 'react'
-import { setAlert, showAlert, hideAlert, AlertInfo } from '../../features/alert/alertSlice'
 import { ProductModel, VariationModel } from '../../api/models/ModelProduct'
-import { Dropdown, DropdownButton, Container, Row, CardColumns, Col, Form } from 'react-bootstrap'
-import { AppDispatch } from '../../app/store'
+import { Dropdown, DropdownButton, Form } from 'react-bootstrap'
 
-import { queryFirestore } from 'firewings'
 import { ModelCategoryList } from '../../api/models/ModelCategory'
-import { Loader } from '../../features/loader/Loader'
 // import { timer } from '../../features/loader/loader.spec'
-import { logo, logt } from '../../utils/apputils'
 import { useState } from 'react'
+import { stringToVariations, variationsToString } from './variation'
 interface Props {
     product: ProductModel,
-    categorylist: ModelCategoryList
+    categorylist: ModelCategoryList,
+    onChange: (model: ProductModel) => void
 }
-
-
+const title = 'title', variations = 'variations'
 
 const Product = (props: Props) => {
 
@@ -25,16 +19,23 @@ const Product = (props: Props) => {
 
     const [state, setState] = useState(props.product)
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const { name, value, type, checked } = event.target
-        if (name === 'title') {
-            state.title = value 
-            
-        }else if(name==='variations'){
-            state.variations = value
-        }
+    const [variationString, setVariationString] = useState(variationsToString(product.variations))
 
-        setState(state)
+
+
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target
+
+        if (name === 'title') {
+            state.title = value
+            console.log(state.title)
+        } else if (name === 'variations') {
+            state.variations = stringToVariations(value)
+            setVariationString(value)
+        }
+        const st = { ...state }
+        props.onChange(st)
+        setState(st)
     }
 
 
@@ -46,6 +47,12 @@ const Product = (props: Props) => {
     //     }
     // }
 
+    function variationToBadges(params: VariationModel[], unit: string) {
+        // Should not use array index as key but it is resonable here
+        return params.map((v, index) => (<span key={index} className="m-2 badge badge-pill badge-light">{`${v.value}${unit} at ${v.price}`}</span>))
+    }
+
+
     return (
         <div className="mt-2 col text-center" >
             <div className="container text-center ">
@@ -56,19 +63,17 @@ const Product = (props: Props) => {
 
             <Form>
                 <Form.Group >
-                    <Form.Control onChange={handleChange} placeholder="Add Product Title" />
+                    <Form.Control name={title} value={state.title} onChange={handleChange} placeholder="Add Product Title" />
                 </Form.Group>
                 <Form.Group >
-                    <Form.Control placeholder="Add Variations" />
+                    <Form.Control placeholder="Add Variations" name={variations} onChange={handleChange} value={variationString} />
                     <small className='ml-1'>Eg. 1-50 means 1{'g'} at 50 Rs</small>
                 </Form.Group>
             </Form>
 
-            <span className="m-2 badge badge-pill badge-light">1g at 25</span>
-            <span className="m-2 badge badge-pill badge-light">1g at 25</span>
-            <span className="m-2 badge badge-pill badge-light">1g at 25</span>
-            <span className="m-2 badge badge-pill badge-light">1g at 25</span>
-            <span className="m-2 badge badge-pill badge-light">1g at 25</span>
+            {variationToBadges(state.variations, state.unit)}
+
+
             <DropdownButton className='py-3' id="dropdown-basic-button" title="Unit">
                 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
