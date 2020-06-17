@@ -1,6 +1,12 @@
-import alert, { hideAlert, showAlert, setAlert, selectAlert, initialState } from './alertSlice'
+import alert, { hideAlert, showAlert, initialState } from './alertSlice'
+/** Usage
+ * 
+*const dispatch = useDispatch()
 
-
+    React.useEffect(() => {
+        setAlert({ msg: "Helloa", type: "danger" }, dispatch)
+    }, [])
+* */
 function addAlert() {
   expect(
     alert({ alerts: [] }, {

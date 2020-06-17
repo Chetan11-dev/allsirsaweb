@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 
-
 export type AlertInfo = {
     msg: string,
     type: AlertProps['variant'],
@@ -44,7 +43,7 @@ export function setAlert(alertInfo: AlertInfo, dispatch: Dispatch<any>) {
 }
 
 export const selectAlert = (state: RootState) => {
-    console.log(state)
+    // console.log(state)
     return state.alert
 }
 

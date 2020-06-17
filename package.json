@@ -10,12 +10,15 @@
     "bootstrap": "^4.5.0",
     "check-prop-types": "^1.1.2",
     "firebase": "^7.15.1",
+    "firebase-timestamp-utils": "^0.2.0",
+    "firewings": "^1.0.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
+    "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
@@ -25,9 +28,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    
     "eject": "react-scripts eject",
-    "test:dev": "jest --watch"
+    "test:prod": "jest",
+    "test": "jest --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,13 +51,14 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^26.0.0",
+    
     "@types/node": "^14.0.13",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.8",
     "@types/uuid": "^8.0.0",
     "@types/react-redux": "^7.1.9",
+    "@types/jest": "^26.0.0",
     "jest": "^26.0.1",
     "ts-jest": "^26.1.0",
     "enzyme": "^3.11.0",

@@ -1,9 +1,16 @@
-import React from 'react'
-import { ProductModel } from '../../models/ModelProduct'
+import React, { useEffect } from 'react'
+import { ProductModel } from '../../api/models/ModelProduct'
 import Product from './Product'
 import { selectAlert } from '../../features/alert/alertSlice'
 import { useSelector } from 'react-redux'
+import { ModelCategoryList } from '../../api/models/ModelCategory'
+import { CategoryApi } from '../../api/databaseApi/categoryApi';
 
+
+interface Props {
+    product: ProductModel,
+    catlist: ModelCategoryList
+}
 
 export const product: ProductModel = {
     subcategory: "Fruits",
@@ -17,14 +24,16 @@ export const product: ProductModel = {
 
 export const ProductComponent = () => {
 
-    const a = useSelector(
-        selectAlert
+    useEffect(() => {
+        // CategoryApi().
+    }, [])
 
-        
-    )
     return (
+
         <Product product={product} />
+
     )
 }
 
 export default ProductComponent
+

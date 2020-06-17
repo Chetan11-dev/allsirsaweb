@@ -1,3 +1,4 @@
+import { Container } from 'react-bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,7 +10,7 @@ import App from './app/App';
 ReactDOM.render(
   <React.StrictMode>
   <Provider store={store}>
-      <App />
+      <Container><App  /></Container>
     </Provider>
    
    </React.StrictMode> 

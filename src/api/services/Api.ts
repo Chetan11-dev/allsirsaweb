@@ -1,16 +1,10 @@
-
-
-
-
 import firebase from './firebase'
-import { queryAllByAltText } from '@testing-library/react'
-
-
 
 
 export class Api {
 
     ref: firebase.firestore.CollectionReference
+
     constructor(path: string) {
         this.ref = firebase.firestore().collection(path)
     }
