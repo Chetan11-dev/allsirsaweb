@@ -1,5 +1,5 @@
 
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import React from 'react'
 import Enzyme from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
@@ -18,7 +18,7 @@ export function wait(timeout: number) {
 
 export async function timer() {
   console.log('object')
-  await wait(500)
+  await wait(10)
 
 }
 
@@ -27,18 +27,20 @@ export async function timerError() {
   throw 'Error'
 }
 
-it('should render spinner', async (done) => {
+it('should render spinne', async (done) => {
 
-  let component = shallow(<Loader operation={timer} onSuccess={() => (<h1 data-test='success' >Success</h1>)} />)
-
-  const wrapper = findByTestAtrr(component, 'loaderspinner')
+  let component = mount(<Loader operation={timer} onSuccess={() => (<h1 data-test='success' >Success</h1>)} />)
+  const wrapper = component.find(`[data-test='${'loaderspinnerodloader'}']`)
+  // const wrapper = findByTestAtrr(component, 'loaderspinner')
+  console.log('wrapper.debug()')
+  console.log(wrapper.debug())
   expect(wrapper.length).toBe(1)
 
   setTimeout(() => {
-    const wrapperNew = findByTestAtrr(component, 'success')
+    // const wrapperNew = findByTestAtrr(component, 'success')
     console.log(wrapper.debug())
-    console.log(wrapperNew.debug())
-    expect(wrapperNew.length).toBe(5)
+    // console.log(wrapperNew.debug())
+    // expect(wrapperNew.length).toBe(5)
     done()
   }, 600)
 

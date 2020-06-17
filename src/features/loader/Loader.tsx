@@ -27,8 +27,8 @@ export function Loader<A>(prop: Props<A>) {
     }, [])
 
     if (state.loading) {
-        return <Spinner data-test='loaderspinner' animation="border" role="status">
-            <span className="sr-only">Loading...</span>
+        return <Spinner animation="border" role="status">
+            <span data-test='loaderspinnerodloader' className="sr-only">Loading...</span>
         </Spinner>
     } else {
         if (state.error) {
