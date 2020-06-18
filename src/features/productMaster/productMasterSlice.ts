@@ -20,6 +20,7 @@ export const initialState: ProductMasterState = {
 export const productMaster = createSlice({
     name: 'alert',
     initialState,
+
     reducers: {
         emptyState: (state,) => {
             // TODO Perform operation on state as 
@@ -33,9 +34,10 @@ export const productMaster = createSlice({
 
 export const { emptyState, updateState } = productMaster.actions
 
-export function addProductsToFireStore(alertInfo: ProductMasterState, dispatch: Dispatch<any>) {
-    // TODO Modify actionPayLoad 
-    // dispatch(actionPayLoad(alertInfo))
+export function addProductsToFireStore(s: ProductMasterState, dispatch: Dispatch<any>) {
+
+
+    dispatch(updateState(s))
 }
 
 export const selectState = (state: RootState) => {
