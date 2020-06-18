@@ -6,32 +6,65 @@
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
+// {
+//     "category": "Grocery & Staples",
+//     "variations": [
+//       {
+//         "price": 70,
+//         "value": 1
+//       }
+//     ],
+//     "unit": "Kg",
+//     "subcategory": "Pulses",
+//     "productimage": "https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0",
+//     "sid": 1,
+//     "id": 11,
+//     "title": "Arhar dal"
+//   }
+// To parse this data:
+//
+//   import { Convert, ProductModel } from "./file";
+//
+//   const productModel = Convert.toProductModel(json);
+//
+// These functions will throw an error if the JSON doesn't
+// match the expected interface, even if the JSON is valid.
+
+// From  {"category":"Grocery & Staples","variations":[{"price":70,"value":1}],"unit":"Kg","subcategory":"Pulses","productimage":"https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0","sid":1,"id":11,"title":"Arhar dal"}
+// To parse this data:
+//
+//   import { Convert, ProductModel } from "./file";
+//
+//   const productModel = Convert.toProductModel(json);
+//
+// These functions will throw an error if the JSON doesn't
+// match the expected interface, even if the JSON is valid.
 
 export interface ProductModel {
-    subcategory: string
-    unit: string
-    variations: VariationModel[]
-    productimage: string
     category: string
-    title: string
+    variations: VariationModel[]
+    unit: string
+    subcategory: string
+    productimage: string
     sid: string
+    id: string
+    title: string
 }
 
 export interface VariationModel {
-
-    value: number
     price: number
+    value: number
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toProduct(json: string): ProductModel {
-        return cast(JSON.parse(json), r("Product"))
+    public static toProductModel(json: string): ProductModel {
+        return cast(JSON.parse(json), r("ProductModel"))
     }
 
-    public static productToJson(value: ProductModel): string {
-        return JSON.stringify(uncast(value, r("Product")), null, 2)
+    public static productModelToJson(value: ProductModel): string {
+        return JSON.stringify(uncast(value, r("ProductModel")), null, 2)
     }
 }
 
@@ -165,14 +198,15 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "Product": o([
-        { json: "subcategory", js: "subcategory", typ: "" },
-        { json: "unit", js: "unit", typ: "" },
-        { json: "variations", js: "variations", typ: a(r("Variation")) },
-        { json: "productimage", js: "productimage", typ: "" },
+    "ProductModel": o([
         { json: "category", js: "category", typ: "" },
-        { json: "title", js: "title", typ: "" },
+        { json: "variations", js: "variations", typ: a(r("Variation")) },
+        { json: "unit", js: "unit", typ: "" },
+        { json: "subcategory", js: "subcategory", typ: "" },
+        { json: "productimage", js: "productimage", typ: "" },
         { json: "sid", js: "sid", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "title", js: "title", typ: "" },
     ], false),
     "Variation": o([
         { json: "price", js: "price", typ: 0 },

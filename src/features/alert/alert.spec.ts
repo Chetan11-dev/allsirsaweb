@@ -1,4 +1,6 @@
 import alert, { hideAlert, showAlert, initialState } from './alertSlice'
+import { wait, timer300 } from '../../utils/asynUtils'
+import { initalReducerState, stateUpdate } from '../../utils/reducertestutils'
 /** Usage
  * 
 *const dispatch = useDispatch()
@@ -18,18 +20,20 @@ function addAlert() {
   )
 }
 function removeAlert() {
-  expect(
-    alert({ alerts: [{ msg: '250', type: 'dark', id: '1' }] }, {
-      type: hideAlert.type,
-      payload: '1'
-    })
-  ).toEqual(initialState)
+  stateUpdate({ alerts: [{ msg: '250', type: 'dark', id: '1' }] }, initialState, {
+    type: hideAlert.type,
+    payload: '1'
+  }, alert)
+
 }
+
+
 
 describe('alert reducer', () => {
 
   it('should handle initial state', () => {
-    expect(alert(undefined, { type: '' })).toEqual(initialState)
+    initalReducerState(initialState, alert,)
+    // expect(alert(undefined, { type: '' })).toEqual(initialState)
   })
 
   it('should add alert', () => {
@@ -45,3 +49,4 @@ describe('alert reducer', () => {
     removeAlert()
   })
 })
+

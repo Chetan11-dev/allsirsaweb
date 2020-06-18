@@ -13,7 +13,7 @@ Enzyme.configure({
 })
 
 // TODO  make it robust by adding test check for other state as well 
-it('should render spinner', async (done) => {
+it('should render spinner', () => {
 
   let component = mount(<Loader operation={() => wait(100)} onSuccess={() => (<h1 data-test='success' >Success</h1>)} />)
   const wrapper = component.find(`[data-test='${'loaderspinnerodloader'}']`)

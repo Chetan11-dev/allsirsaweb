@@ -1,40 +1,41 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
+import { ProductModel } from '../../api/models/ModelProduct'
+import { data } from '../../api/databaseApi/data'
 
-
-export type ProductMasterArgs = {
-    id?: string
+export interface ProductMasterState {
+    pending: ProductModel[],
+    inCorrect: ProductModel[],
+    unSuccesFull: ProductModel[],
+    loading: boolean
 }
-
-interface ProductMasterState {
-    args: ProductMasterArgs[]
-}
-
 
 export const initialState: ProductMasterState = {
-    args: [],
+    pending: [],
+    inCorrect: [],
+    unSuccesFull: [],
+    loading: false
 }
 
 export const productMaster = createSlice({
     name: 'alert',
     initialState,
     reducers: {
-        updateState: (state,) => {
+        emptyState: (state,) => {
             // TODO Perform operation on state as 
             // state.args = null 
         },
-        emptyState: (state, action: PayloadAction<ProductMasterArgs>) => {
-            // TODO Perform operation on state as 
-            // state.args.push(action.payload)  
+        updateState: (state, action: PayloadAction<ProductMasterState>) => {
+            return action.payload
         },
     },
 })
 
-export const { emptyState: actionPayLoad, updateState: actionNoPayLoad } = productMaster.actions
+export const { emptyState, updateState } = productMaster.actions
 
-export function addProductsToFireStore(alertInfo: ProductMasterArgs, dispatch: Dispatch<any>) {
+export function addProductsToFireStore(alertInfo: ProductMasterState, dispatch: Dispatch<any>) {
     // TODO Modify actionPayLoad 
-    dispatch(actionPayLoad(alertInfo))
+    // dispatch(actionPayLoad(alertInfo))
 }
 
 export const selectState = (state: RootState) => {

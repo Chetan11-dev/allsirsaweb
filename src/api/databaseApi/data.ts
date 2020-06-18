@@ -10,12 +10,12 @@ export const data = {
         unit: 'Kg',
         subcategory: 'Pulses',
         productimage: 'https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0',
-        sid: 1,
-        id: 11,
+        sid: '1',
+        id: '11',
         title: 'Arhar dal'
     }, {
         category: 'Personal Care',
-        id: 12,
+        id: '12',
         variations: [
             {
                 price: 70,
@@ -25,11 +25,11 @@ export const data = {
         unit: 'ml',
         subcategory: 'Face Care',
         productimage: 'https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0',
-        sid: 2,
+        sid: '2',
         title: 'Himalya Face Pack'
     }, {
         category: 'Biscuits, Snacks & Chocolates',
-        id: 13,
+        id: '13',
         variations: [
             {
                 price: 25,
@@ -39,7 +39,7 @@ export const data = {
         unit: 'ml',
         subcategory: 'Juices & Drinks',
         productimage: 'https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0',
-        sid: 3,
+        sid: '3',
         title: 'Fruit Juice'
     }],
     sellers: [
@@ -51,7 +51,7 @@ export const data = {
             ],
             name: 'Ratu',
             phone: '999'
-            , id: 1,
+            , id: '1',
         },
         {
             phone: '777',
@@ -59,7 +59,7 @@ export const data = {
                 'milk'
             ],
             name: 'Chandra',
-            id: 2,
+            id: '2',
         }
     ],
     categories: {

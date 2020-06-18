@@ -31,7 +31,8 @@ export var product: ProductModel = {
     productimage: "https://picsum.photos/id/237/200/300",
     category: "Grocery & Staples",
     title: "Arhar",
-    sid: "1",
+    sid: '1',
+    id: '1'
 }
 
 export function productChanged(p: ProductModel) {

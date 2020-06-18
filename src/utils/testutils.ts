@@ -15,10 +15,12 @@ export const didFindByTestAtrr = (component: Wrapper, attr: string) => {
   return ifExistsDoElse(findByTestAtrr(component, attr), () => true, () => false)
 }
 
-function ifExistsDoElse<A>(component: Wrapper, e: (a: Wrapper) => A, n: (a: Wrapper) => A) {
+export function ifExistsDoElse<A>(component: Wrapper, e: (a: Wrapper) => A, n: (a: Wrapper) => A) {
   if (component.exists()) {
     return e(component)
   } else {
     return n(component)
   }
 }
+
+// import { findByTestAtrr, findAndDebug, didFindByTestAtrr  , ifExistsDoElse } from '../../utils/testutils';
