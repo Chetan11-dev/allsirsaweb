@@ -34,6 +34,14 @@ export const productMaster = createSlice({
 
 export const { emptyState, updateState } = productMaster.actions
 
+
+
+function filterProducts(param: ProductModel) {
+
+
+}
+
+
 export function addProductsToFireStore(s: ProductMasterState, dispatch: Dispatch<any>) {
 
 
