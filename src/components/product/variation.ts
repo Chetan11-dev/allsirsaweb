@@ -1,6 +1,7 @@
 // Dont destruce they make true copies
 
 import { VariationModel } from '../../api/models/ModelProduct'
+import { isListEmpty } from '../../utils/tsUtils'
 // import { logt } from '../../utils/apputils'
 
 function splitTrim(s: string, split: string): string[] {
@@ -35,13 +36,14 @@ export function stringToVariations(s: string): VariationModel[] {
     return ls.map(toVariation)
 }
 function variationToString(v: VariationModel) { return `${v.value}-${v.price}` }
+
 export function variationsToString(params: VariationModel[] | null | undefined): string {
 
-    if (params == null || !params || params.length === 0) {
+    if (isListEmpty(params)) {
         return ''
     }
     // map to a string 
-    const ls = params.map(variationToString)
+    const ls = params!.map(variationToString)
     // reduce with commass
 
     const lss = ls.reduce((prev, curr) => {

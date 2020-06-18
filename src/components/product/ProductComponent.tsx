@@ -38,7 +38,7 @@ export function productChanged(p: ProductModel) {
     product = p
 }
 
-export const ProductMaster = () => {
+export const ProductComponent = () => {
 
     const api = new CategoryApi()
 
@@ -55,5 +55,5 @@ export const ProductMaster = () => {
     )
 }
 
-export default ProductMaster
+export default ProductComponent
 
