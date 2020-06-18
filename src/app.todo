@@ -1,0 +1,7 @@
+App:
+    ProductMaster
+      - add reducer 
+      - Use Container architecture
+      - handle intial empty state in product master 
+      - handle full state in product master 
+      - Add error outline for invalid products

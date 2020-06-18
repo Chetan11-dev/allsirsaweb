@@ -38,13 +38,15 @@ export function productChanged(p: ProductModel) {
     product = p
 }
 
-export const ProductComponent = () => {
+export const ProductMaster = () => {
+
     const api = new CategoryApi()
 
     return (
         <div>
             <Loader operation={api.getDataCollection} onSuccess={(a) => {
-                // TODO solve onsucess called twice use  to know console.count('onSuccess')
+
+                // TODO solve onsucess called twice use to reproduce console.count('onSuccess')
                 return <Product onChange={productChanged} product={product} categorylist={a} />
 
             }} />
@@ -53,5 +55,5 @@ export const ProductComponent = () => {
     )
 }
 
-export default ProductComponent
+export default ProductMaster
 

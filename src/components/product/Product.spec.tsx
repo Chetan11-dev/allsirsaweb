@@ -49,7 +49,6 @@ describe("ProductFormtEST", () => {
       expect(stringToVariations(variationInput.prop('value'))).toStrictEqual((product.variations))
     }
 
-
     inputMatchesWithProductVariation()
     inputMatchesWithProductTitle()
 
