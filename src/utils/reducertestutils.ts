@@ -1,4 +1,4 @@
-import { Reducer, Action } from '@reduxjs/toolkit'
+import { Reducer } from '@reduxjs/toolkit'
 
 interface Payload<C> {
     type: string,

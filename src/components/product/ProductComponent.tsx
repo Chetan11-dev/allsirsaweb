@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+
 import { ProductModel } from '../../api/models/ModelProduct'
 import Product, { ProductModelMeta } from './Product'
-import { selectAlert } from '../../features/alert/alertSlice'
-import { useSelector } from 'react-redux'
 import { ModelCategoryList } from '../../api/models/ModelCategory'
 import { CategoryApi } from '../../api/databaseApi/categoryApi'
 import { Loader } from '../../features/loader/Loader'
-import { timer100, timer500, timer400 } from '../../utils/asynUtils'
-import { logo, logt } from '../../utils/apputils'
-import beautify from 'js-beautify'
 
 
 interface Props {

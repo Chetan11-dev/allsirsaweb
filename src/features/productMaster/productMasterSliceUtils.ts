@@ -1,16 +1,6 @@
-import { useDispatch } from 'react-redux'
-import { setLoader, unsetLoader } from '../appLoader/appLoaderSlice'
 
-import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
-import { RootState } from '../../app/store'
-import { ProductModel } from '../../api/models/ModelProduct'
-import { data } from '../../api/databaseApi/data'
-import { isEmptyString, isNotValidString as isNotEmpty, isListEmpty, isEmpty } from '../../utils/tsUtils'
-import { lazy } from 'react'
-import { string } from 'prop-types'
-import { product } from '../../components/product/ProductComponent'
+import { isEmptyString, isListEmpty } from '../../utils/tsUtils'
 import { ProductModelMeta } from '../../components/product/Product'
-import { setAlert } from '../alert/alertSlice'
 import { ProductMasterState } from './productMasterSlice'
 
 export function isValidProduct(param: ProductModelMeta) {

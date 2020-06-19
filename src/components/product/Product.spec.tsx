@@ -1,15 +1,13 @@
-import { ModelCategoryList } from '../../api/models/ModelCategory'
+
 import { CategoryApi } from '../../api/databaseApi/categoryApi'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
-import { ProductModel } from '../../api/models/ModelProduct'
 
 import Enzyme from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAtrr, didFindByTestAtrr, findAndDebug, } from '../../utils/testutils'
-import Product, { title, variations, variationsBadges } from './Product'
+import { didFindByTestAtrr, } from '../../utils/testutils'
+import Product, { title, variations } from './Product'
 import { product, productChanged } from './ProductComponent'
-import { log } from '../../utils/apputils'
 import { stringToVariations } from './variation'
 
 Enzyme.configure({

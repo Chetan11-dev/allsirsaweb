@@ -1,7 +1,6 @@
-import { connect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import React from 'react'
 import { AlertInfo, selectAlert } from './alertSlice'
-import RootState from '../../app/rootReducer'
 import AlertB, { AlertProps } from 'react-bootstrap/Alert'
 
 export interface Props {

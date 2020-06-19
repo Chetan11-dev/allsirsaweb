@@ -6,9 +6,6 @@ import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory
 // import { timer } from '../../features/loader/loader.spec'
 import { useState } from 'react'
 import { stringToVariations, variationsToString } from './variation'
-import { isString } from 'util'
-import { useDispatch } from 'react-redux'
-import { setLoader, unsetLoader } from '../../features/appLoader/appLoaderSlice'
 export interface ProductModelMeta {
     product: ProductModel,
     imageFile?: any

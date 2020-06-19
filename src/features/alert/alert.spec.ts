@@ -1,5 +1,4 @@
 import alert, { hideAlert, showAlert, initialState } from './alertSlice'
-import { wait, timer300 } from '../../utils/asynUtils'
 import { initalReducerState, stateUpdate } from '../../utils/reducertestutils'
 /** Usage
  * 

@@ -1,6 +1,5 @@
-import { AlertProps } from 'react-bootstrap/Alert'
-import { v4 as uuidv4 } from 'uuid'
-import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
+
+import { createSlice, Dispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 
 const initialState = false

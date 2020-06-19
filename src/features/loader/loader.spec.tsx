@@ -1,9 +1,8 @@
 
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
 import Enzyme from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAtrr } from '../../utils/testutils'
 import { Loader } from './Loader'
 import { wait } from '../../utils/asynUtils'
 
