@@ -74,6 +74,8 @@ export const ProductMaster = () => {
                     ls.push(e)
                     const ps = pd.inCorrect.map((p, index) => {
                         const onChange = (p: ProductModelMeta) => {
+                            console.log('****************************')
+                            console.log(p)
                             pd.pending[index] = p
                         }
                         return (<Product onChange={onChange} product={p} categorylist={c} />)

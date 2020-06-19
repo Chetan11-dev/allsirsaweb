@@ -6,6 +6,8 @@ import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory
 // import { timer } from '../../features/loader/loader.spec'
 import { useState } from 'react'
 import { stringToVariations, variationsToString } from './variation'
+
+import { ct, snapshottoarray, toJsStr, beautify, log, logo, logt } from '../../utils/logutils'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ProductModel,
@@ -28,10 +30,16 @@ interface meta {
 const units = ['g', 'kg', 'ml', 'l']
 
 function findCategory(param: string, cats: ModelCategory[]) {
+
     const foundCategory = cats.find((v) => v.name === param)
+
     if (foundCategory) {
+        ct('fc')
         return foundCategory
     } else {
+        // ct('ufc')
+        console.log(cats[0])
+
         return cats[0]
     }
 }
@@ -75,6 +83,10 @@ function makeDropDowns(p: string[], defaultValue: string, classes: string, onSel
 export const title = 'title', variations = 'variations', variationsBadges = 'variationsBadges', category = 'category', subcategory = 'subcategory', unit = 'unit'
 
 const Product = (props: Props) => {
+    React.useEffect(() => {
+        log(props.product)
+
+    }, [])
 
     const { product, categorylist, onChange } = props
 
@@ -84,23 +96,23 @@ const Product = (props: Props) => {
 
     const [meta, setmeta] = useState<meta>(getMeta(state.product, categorylist))
 
+    // To autocorrect products
+    if (meta.currentCategory.name !== state.product.category || meta.currentSubCategory !== state.product.subcategory) {
+        stateChangeHandler({ ...state, product: { ...state.product, subcategory: meta.currentSubCategory, category: meta.currentCategory.name } })
+    }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 
         const { name, value } = event.target
 
         if (name === title) {
-            // state.product.title = value
             stateChangeHandler({ ...state, product: { ...state.product, title: value } })
-            // console.log(state.product.title)
 
         } else if (name === variations) {
             setVariationString(value)
             stateChangeHandler({ ...state, product: { ...state.product, variations: stringToVariations(value) } })
 
         } else console.error(`Invalid formevent ${event}`)
-
-        // stateChangeHandler(state)
 
     }
 
@@ -148,7 +160,7 @@ const Product = (props: Props) => {
             <div data-test={variationsBadges} >
                 {variationToBadges(state.product.variations, state.product.unit)}</div>
             {makeDropDowns(units, state.product.unit, '', handleUnitChange)}
-            {makeDropDowns(meta.categories, state.product.category, 'p-3', handleCategoryChange)}
+            {makeDropDowns(meta.categories, meta.currentCategory.name, 'p-3', handleCategoryChange)}
             {makeDropDowns(meta.currentCategory.subcategories, meta.currentSubCategory, '', handleSubCategoryChange)}
         </div>
 

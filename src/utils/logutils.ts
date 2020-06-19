@@ -6,5 +6,6 @@ export const beautify = (data: any) => beautifyy(toJsStr(data), { indent_size: 2
 export const log = (data: any) => console.log(data)
 export const logo = (data: any) => console.log(beautifyy(toJsStr(data), { indent_size: 2, space_in_empty_paren: true }))
 export const logt = (data: any) => console.trace(beautifyy(toJsStr(data), { indent_size: 2, space_in_empty_paren: true }))
+export const ct = (data?: any) => console.count(data)
 
-// import{ snapshottoarray ,  toJsStr ,  beautify ,  log ,  logo ,  logt } from '' 
+// import{ct ,  snapshottoarray ,  toJsStr ,  beautify ,  log ,  logo ,  logt } from '' 
