@@ -6,6 +6,7 @@ import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory
 // import { timer } from '../../features/loader/loader.spec'
 import { useState } from 'react'
 import { stringToVariations, variationsToString } from './variation'
+// import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ProductModel,
     imageFile?: any
@@ -75,8 +76,6 @@ export const title = 'title', variations = 'variations', variationsBadges = 'var
 
 const Product = (props: Props) => {
 
-
-
     const { product, categorylist, onChange } = props
 
     const [state, setState] = useState(product)
@@ -85,45 +84,50 @@ const Product = (props: Props) => {
 
     const [meta, setmeta] = useState<meta>(getMeta(state.product, categorylist))
 
+
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 
         const { name, value } = event.target
 
         if (name === title) {
-            state.product.title = value
-            console.log(state.product.title)
+            // state.product.title = value
+            stateChangeHandler({ ...state, product: { ...state.product, title: value } })
+            // console.log(state.product.title)
+
         } else if (name === variations) {
-            state.product.variations = stringToVariations(value)
             setVariationString(value)
+            stateChangeHandler({ ...state, product: { ...state.product, variations: stringToVariations(value) } })
+
         } else console.error(`Invalid formevent ${event}`)
-        stateChangeHandler(state)
+
+        // stateChangeHandler(state)
 
     }
 
     function stateChangeHandler(state: ProductModelMeta) {
-        const st = { ...state }
-        onChange(st)
-        setState(st)
-        return st
+        onChange(state)
+        setState(state)
+        return state
     }
 
 
     function handleSubCategoryChange(event: string) {
-        state.product.subcategory = event
-        const st = stateChangeHandler(state)
+        const st = stateChangeHandler({ ...state, product: { ...state.product, subcategory: event } })
         setmeta(getMeta(st.product, categorylist))
     }
 
     function handleUnitChange(event: string) {
-        state.product.unit = event
-        stateChangeHandler(state)
+        stateChangeHandler({ ...state, product: { ...state.product, unit: event } })
     }
 
     function handleCategoryChange(event: string) {
-        state.product.category = event
-        stateChangeHandler(state)
-        setmeta(getMeta(state.product, categorylist))
+        // const a = event
+        // state.product.category = event
+        const ns = { ...state, product: { ...state.product, category: event } }
+        stateChangeHandler(ns)
+        setmeta(getMeta(ns.product, categorylist))
     }
+
     return (
         <div className="mt-2 col text-center" >
             <div className="container text-center ">

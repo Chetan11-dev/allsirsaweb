@@ -10,6 +10,10 @@ export function isListEmpty(param: any[] | Empty) {
     } else return false
 }
 
+export function isListNotEmpty(param: any[] | Empty) {
+    return !isListEmpty(param)
+}
+
 export function isEmptyString(p: string | Empty) {
     if (isEmpty(p) || p!.trim().length === 0) {
         return true
@@ -20,4 +24,4 @@ export function isNotValidString(p: string | Empty) {
     return !isEmptyString(p)
 }
 
-// import { isEmpty, isListEmpty,isInValidString ,isValidString} from '';import { type } from '../app/store';
+// import { isEmpty, isListNotEmpty , isListEmpty,isInValidString ,isValidString} from '';import { type } from '../app/store'

@@ -5,9 +5,7 @@ import AppSpinner from '../../components/Layout/spinner'
 
 export const AppLoader = (
 ) => {
-    const loading = useSelector(
-        selectLoader
-    )
+    const loading = useSelector(selectLoader)
 
     if (!loading) {
         return <></>

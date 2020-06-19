@@ -5,6 +5,7 @@ import { RootState } from '../../app/store'
 import { ProductModelMeta } from '../../components/product/Product'
 import { setAlert } from '../alert/alertSlice'
 import { purifyState, getProduct } from './productMasterSliceUtils'
+import { product } from './ProductMaster'
 
 
 export interface ProductMasterState {
@@ -16,6 +17,17 @@ export const initialState: ProductMasterState = {
     pending: [],
     inCorrect: []
 }
+export const testState: ProductMasterState = {
+    pending: [{ ...product }, {
+        ...product, product: {
+            ...product.product, category: '****',
+
+            subcategory: '****',
+            title: 'p2'
+        }
+    }],
+    inCorrect: [{ ...product, product: { ...product.product, category: '****', title: '', variations: [] } }]
+}
 
 export const productMaster = createSlice({
     name: 'alert',
@@ -25,7 +37,7 @@ export const productMaster = createSlice({
         emptyState: () => {
             return initialState
         },
-        updateState: (state, action: PayloadAction<ProductMasterState>) => {
+        updateState: (_, action: PayloadAction<ProductMasterState>) => {
             return action.payload
         },
         addProduct: (state,) => {
@@ -36,9 +48,8 @@ export const productMaster = createSlice({
     },
 })
 
-
-
 export const { emptyState, updateState, addProduct } = productMaster.actions
+
 
 
 
@@ -92,7 +103,7 @@ export async function addProductsToDB(s: ProductMasterState, dispatch: Dispatch<
     unsetLoader(dispatch)
 }
 
-export const selectState = (state: RootState) => {
+export const selectProductMaster = (state: RootState) => {
     return state.productMaster
 }
 
