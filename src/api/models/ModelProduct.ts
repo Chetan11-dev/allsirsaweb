@@ -45,9 +45,9 @@ export interface ProductModel {
     variations: VariationModel[]
     unit: string
     subcategory: string
-    productimage: string
-    sid: string
-    id: string
+    productimage?: string
+    sid?: string
+    id?: string
     title: string
 }
 

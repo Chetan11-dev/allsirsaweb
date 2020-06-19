@@ -2,18 +2,18 @@
 import React from 'react'
 import ProductComponent from '../components/product/ProductComponent'
 import { Alert } from '../features/alert/Alert'
-import { useSelector } from 'react-redux'
-import { selectAlert } from '../features/alert/alertSlice'
+
+import { AppLoader } from '../features/appLoader/AppLoader'
 
 
 const App = () => {
 
     return (
         <div>
-
-
-            <ProductComponent />
             < Alert />
+            <AppLoader />
+            <ProductComponent />
+
         </div>
 
     )

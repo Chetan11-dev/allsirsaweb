@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { ProductModel } from '../../api/models/ModelProduct'
-import Product from './Product'
+import Product, { ProductModelMeta } from './Product'
 import { selectAlert } from '../../features/alert/alertSlice'
 import { useSelector } from 'react-redux'
 import { ModelCategoryList } from '../../api/models/ModelCategory'
@@ -16,26 +16,28 @@ interface Props {
     catlist: ModelCategoryList
 }
 
-export var product: ProductModel = {
-    subcategory: "Pulses",
-    unit: 'kg',
-    variations: [
-        {
-            price: 70,
-            value: 20
-        }, {
-            price: 90,
-            value: 30
-        }
-    ],
-    productimage: "https://picsum.photos/id/237/200/300",
-    category: "Grocery & Staples",
-    title: "Arhar",
-    sid: '1',
-    id: '1'
+export var product: ProductModelMeta = {
+    product: {
+        subcategory: "Pulses",
+        unit: 'kg',
+        variations: [
+            {
+                price: 70,
+                value: 20
+            }, {
+                price: 90,
+                value: 30
+            }
+        ],
+        productimage: "https://picsum.photos/id/237/200/300",
+        category: "Grocery & Staples",
+        title: "Arhar",
+        sid: '1',
+        id: '1'
+    }
 }
 
-export function productChanged(p: ProductModel) {
+export function productChanged(p: ProductModelMeta) {
     product = p
 }
 

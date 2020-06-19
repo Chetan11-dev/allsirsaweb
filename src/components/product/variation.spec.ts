@@ -12,6 +12,7 @@ it(
         expect(stringToVariations('85-8-8-10,2--178,')).toStrictEqual([])
         expect(stringToVariations('85-8-8-10,2-8-178,')).toStrictEqual([])
         expect(stringToVariations('5   -  6 ,2  - 8-178,')).toStrictEqual([{ price: 6, value: 5 }])
+        expect(stringToVariations('-5   -  6 ,2  - 8-178,')).toStrictEqual([])
 
     })
 

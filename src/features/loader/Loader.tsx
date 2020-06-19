@@ -1,5 +1,6 @@
 import { Spinner } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
+import AppSpinner from '../../components/Layout/spinner'
 
 interface Props<A> {
     operation: () => Promise<A>,
@@ -25,9 +26,7 @@ export function Loader<A>(prop: Props<A>) {
     }, [prop])
 
     if (state.loading) {
-        return <div className='text-center m-5'><Spinner  animation="border" role="status">
-        <span data-test='loaderspinnerodloader' className="sr-only">Loading...</span>
-    </Spinner></div>
+        return <AppSpinner />
     } else {
         // console.count('else')
         if (state.error) {
@@ -39,5 +38,3 @@ export function Loader<A>(prop: Props<A>) {
         }
     }
 }
-
-

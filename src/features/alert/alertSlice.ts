@@ -33,13 +33,13 @@ export const alertSlice = createSlice({
 
 export const { hideAlert, showAlert } = alertSlice.actions
 
-export function setAlert(alertInfo: AlertInfo, dispatch: Dispatch<any>) {
+export function setAlert(alertInfo: AlertInfo, dispatch: Dispatch<any>, timeout = 5) {
     const id = uuidv4()
 
     alertInfo.id = id
 
     dispatch(showAlert(alertInfo))
-    setTimeout(() => dispatch(hideAlert(id)), 3000)
+    setTimeout(() => dispatch(hideAlert(id)), timeout * 1000)
 }
 
 export const selectAlert = (state: RootState) => {

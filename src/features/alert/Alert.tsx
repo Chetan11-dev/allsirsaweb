@@ -22,7 +22,7 @@ export const Alert = (
 
 
     const elems = alerts.map(alert => (
-        <AlertB  className="m-4" key={alert.id} variant={alert.type as AlertProps['variant']}>
+        <AlertB className="m-4" key={alert.id} variant={alert.type as AlertProps['variant']}>
             {alert.msg}
         </AlertB>
     ))

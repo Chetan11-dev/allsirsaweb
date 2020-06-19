@@ -2,12 +2,12 @@ import { Reducer, Action } from '@reduxjs/toolkit'
 
 interface Payload<C> {
     type: string,
-    payload: C
+    payload?: C
 }
 
 
 export function initalReducerState<A,>(is: A, reducer: Reducer<A, any>) {
-    expect(reducer(undefined, { type: '' })).toEqual(is)
+    expect(reducer(undefined, { type: '' })).toStrictEqual(is)
 }
 
 

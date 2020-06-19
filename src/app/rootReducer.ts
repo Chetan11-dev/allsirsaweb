@@ -1,9 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import alertReducer from '../features/alert/alertSlice'
 import productMasterReducer from '../features/productMaster/productMasterSlice'
+import appLoaderReducer from '../features/appLoader/appLoaderSlice'
+
 const rootReducer = combineReducers({
     alert: alertReducer,
-    productMaster: productMasterReducer
+    productMaster: productMasterReducer,
+    apploader: appLoaderReducer
 
 })
 

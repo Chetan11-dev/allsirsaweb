@@ -15,7 +15,7 @@ export function isValidVariation(params: string) {
     const v = parseInt(value)
     const p = parseInt(price)
 
-    if (v && p && ls.length === 2) {
+    if (v && p && ls.length === 2 && v >= 0 && p >= 0) {
         return true
     } else return false
 }
