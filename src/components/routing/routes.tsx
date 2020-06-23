@@ -9,7 +9,7 @@ export interface Routes {
 
 
 
-const routes: Routes[] = [{
+export const routes: Routes[] = [{
     component: Button,
     path: '/orders',
     title: 'Orders',
@@ -36,5 +36,10 @@ const routes: Routes[] = [{
 },]
 
 export function getRoutes(routes: Routes[]) {
-    return routes.map((r) => <Route exact path={r.path} component={r.component} />)
+    const ls = routes.map((r) => <Route exact path={r.path} component={r.component} />)
+
+    // addAllRoutes
+    // ls.push(<Route component={Button} />)
+    return ls
 }
+

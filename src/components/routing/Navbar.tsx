@@ -1,5 +1,6 @@
 import React from 'react'
-import { appname } from '../utils/apputils'
+import { routes } from './routes'
+import { appname } from '../../utils/apputils'
 
 
 export const Navbar = () => {

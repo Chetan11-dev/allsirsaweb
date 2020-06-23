@@ -53,7 +53,7 @@ export const ProductMaster = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(updateState(testState))
+        // dispatch(updateState(testState))
     }, [])
 
     if (pd.inCorrect.length + pd.pending.length === 0) {
@@ -69,7 +69,8 @@ export const ProductMaster = () => {
                 const ls: JSX.Element[] = []
 
                 if (isListNotEmpty(pd.inCorrect)) {
-                    const inc = 'Products whose details are inCorrect :-'
+
+                    const inc = 'Products whose details are in correct :-'
                     const e = <h1>{inc}</h1>
                     ls.push(e)
                     const ps = pd.inCorrect.map((p, index) => {
