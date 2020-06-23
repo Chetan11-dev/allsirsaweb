@@ -34,6 +34,8 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test:prod": "jest",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install",
+    "testr": "react-scripts test",
     "test": "jest --watch",
     "removeunusedimport": "node ./node_modules/tslint/bin/tslint --config tslint-imports.json --fix --project .",
     "storybook": "start-storybook -p 9009 -s public",
@@ -58,6 +60,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.2",
     "@storybook/react": "^5.3.19",

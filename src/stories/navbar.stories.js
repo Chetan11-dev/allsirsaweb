@@ -1,13 +1,11 @@
 import React from 'react'
 // import { action } from '@storybook/addon-actions'
-import { Navbar } from './Nav'
 
-export const Nvbar = () => (
-  <Navbar />
-)
+import Product from '../components/product/Product'
+export { CorrectProduct, WrongProduct } from './Nav'
+
 
 
 export default {
-  title: 'Navbara ',
-  component: Navbar,
+  title: 'Product ',
 }

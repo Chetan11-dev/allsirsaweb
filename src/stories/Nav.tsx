@@ -1,66 +1,82 @@
+import { action } from '@storybook/addon-actions'
+
+
 import React from 'react'
 import { appname } from '../utils/apputils'
+import Product, { ProductModelMeta } from '../components/product/Product'
+// import { productChanged, product } from '../components/product/Product.spec'
+import { Loader } from '../features/loader/Loader'
+import { CategoryApi } from '../api/databaseApi/categoryApi'
+import { beautify } from '../utils/logutils'
+import { data } from '../api/databaseApi/data'
+// import {  } from '../features/productMaster/ProductMaster';
 
-export interface Routes {
-    path: string
-    title: string
-    component: JSX.Element
+
+export var wrongproduct: ProductModelMeta = {
+    imageFile: '',
+    product: {
+        subcategory: "***** ",
+        unit: 'kgG',
+        variations: [
+            {
+                price: 70,
+                value: 20
+            }, {
+                price: 90,
+                value: 30
+            }
+        ],
+        productimage: "https://picsum.photos/id/237/200/300",
+        category: "--------",
+        title: "Arhar",
+        sid: '1',
+        id: '1'
+    }
 }
 
-
-const routes: Routes[] = [{
-    component: <div />,
-    path: 'orders',
-    title: 'Orders',
-}, {
-    component: <div />,
-    path: 'completedorders',
-    title: 'Completed Orders',
-}, {
-    component: <div />,
-    path: 'cancelledorders',
-    title: 'Cancelled Orders',
-}, {
-    component: <div />,
-    path: 'add-products',
-    title: 'Add Products',
-}, {
-    component: <div />,
-    path: 'edit-products',
-    title: 'Edit Products',
-}, {
-    component: <div />,
-    path: 'profile',
-    title: 'Profile',
-},]
-
-export const Navbar = () => {
-
-    const ls = routes.map(e => (<li className='nav-item'>
-        <a className='nav-link' href={e.path}>{e.title}<span className='sr-only'>(current)</span>
-        </a>
-    </li>))
-    return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <a className='navbar-brand' href='/'>
-                {appname}
-            </a>
-            <button
-                className='navbar-toggler'
-                type='button'
-                data-toggle='collapse'
-                data-target='#navbarSupportedContent'
-                aria-controls='navbarSupportedContent'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
-            >
-                <span className='navbar-toggler-icon' />
-            </button>
-            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                <ul className='navbar-nav mr-auto'>
-                    {ls}
-                </ul>
-            </div>
-        </nav>
-    )
+export var corectproduct: ProductModelMeta = {
+    imageFile: '',
+    product: {
+        subcategory: "Pulses",
+        unit: 'g',
+        variations: [
+            {
+                price: 70,
+                value: 20
+            }, {
+                price: 90,
+                value: 30
+            }
+        ],
+        productimage: "https://picsum.photos/id/237/200/300",
+        category: "Grocery & Staples",
+        title: "Arhar",
+        sid: '1',
+        id: '1'
+    }
 }
+
+export const actionsData = {
+    onProductChanged: action('onProductChanged'),
+    onVariationChanged: action('onVariationChanged'),
+}
+
+export function productChanged(p: ProductModelMeta) {
+    actionsData.onProductChanged(beautify(p))
+}
+
+export const CorrectProduct = () => (
+    <ProductWrapper {...corectproduct} />
+)
+
+export const WrongProduct = () => (
+    <ProductWrapper {...wrongproduct} />
+)
+
+
+export const ProductWrapper = (p: ProductModelMeta) => {
+    return <Product onChange={productChanged} categorylist={data.categories} product={p} />
+
+
+}
+

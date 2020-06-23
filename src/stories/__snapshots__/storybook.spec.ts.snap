@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Product  Correct Product 1`] = `
+<div
+  className="mt-2 col text-center"
+>
+  <div
+    className="container text-center "
+  >
+    <i
+      className="far fa-images a bg-light p-2 mb-2"
+      style={
+        Object {
+          "fontSize": "90px",
+        }
+      }
+    />
+  </div>
+  <form
+    className=""
+  >
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        data-test="title"
+        name="title"
+        onChange={[Function]}
+        placeholder="Add Product Title"
+        value="Arhar"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        data-test="variations"
+        name="variations"
+        onChange={[Function]}
+        placeholder="Add Variations"
+        value="20-70,30-90"
+      />
+      <small
+        className="ml-1"
+      >
+        Eg. 1-50 means 1
+        g
+         at 50 Rs
+      </small>
+    </div>
+  </form>
+  <div
+    data-test="variationsBadges"
+  >
+    <span
+      className="m-2 badge badge-pill badge-light"
+    >
+      20g at 70
+    </span>
+    <span
+      className="m-2 badge badge-pill badge-light"
+    >
+      30g at 90
+    </span>
+  </div>
+  <div
+    className=""
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        g
+      </button>
+    </div>
+  </div>
+  <div
+    className="p-3"
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Grocery & Staples
+      </button>
+    </div>
+  </div>
+  <div
+    className=""
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Pulses
+      </button>
+    </div>
+  </div>
+  <hr />
+</div>
+`;
+
+exports[`Storyshots Product  Wrong Product 1`] = `
+<div
+  className="mt-2 col text-center"
+>
+  <div
+    className="container text-center "
+  >
+    <i
+      className="far fa-images a bg-light p-2 mb-2"
+      style={
+        Object {
+          "fontSize": "90px",
+        }
+      }
+    />
+  </div>
+  <form
+    className=""
+  >
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        data-test="title"
+        name="title"
+        onChange={[Function]}
+        placeholder="Add Product Title"
+        value="Arhar"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <input
+        className="form-control"
+        data-test="variations"
+        name="variations"
+        onChange={[Function]}
+        placeholder="Add Variations"
+        value="20-70,30-90"
+      />
+      <small
+        className="ml-1"
+      >
+        Eg. 1-50 means 1
+        g
+         at 50 Rs
+      </small>
+    </div>
+  </form>
+  <div
+    data-test="variationsBadges"
+  >
+    <span
+      className="m-2 badge badge-pill badge-light"
+    >
+      20g at 70
+    </span>
+    <span
+      className="m-2 badge badge-pill badge-light"
+    >
+      30g at 90
+    </span>
+  </div>
+  <div
+    className=""
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        g
+      </button>
+    </div>
+  </div>
+  <div
+    className="p-3"
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Grocery & Staples
+      </button>
+    </div>
+  </div>
+  <div
+    className=""
+  >
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-primary"
+        disabled={false}
+        id="dropdown-basic-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Pulses
+      </button>
+    </div>
+  </div>
+  <hr />
+</div>
+`;

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import AppSpinner from '../../components/Layout/spinner'
 
+
 interface Props<A> {
     operation: () => Promise<A>,
     onSuccess: (a: A) => JSX.Element

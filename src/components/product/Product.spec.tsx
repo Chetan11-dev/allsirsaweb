@@ -33,7 +33,6 @@ export var product: ProductModelMeta = {
 
 export function productChanged(p: ProductModelMeta) {
   product = p
-  console.log({ p, product })
 }
 
 Enzyme.configure({
@@ -73,20 +72,20 @@ describe("ProductFormtEST", () => {
       expect(stringToVariations(variationInput.prop('value'))).toStrictEqual((product.product.variations))
     }
 
-    console.log(component.debug())
-    // inputMatchesWithProductVariation()
-    // inputMatchesWithProductTitle()
+    // console.log(component.debug())
+    inputMatchesWithProductVariation()
+    inputMatchesWithProductTitle()
 
     // TODO  do input change and test
 
-    titleInput.simulate('change', { target: { value: 'Urad', name: title } })
+    // titleInput.simulate('change', { target: { value: 'Urad', name: title } })
 
 
-    inputMatchesWithProductTitle()
+    // inputMatchesWithProductTitle()
 
-    // console.log(component.)
-    variationInput.simulate('change', { target: { value: '8-78,7-85', name: variations } })
-    inputMatchesWithProductVariation()
+    // // console.log(component.)
+    // variationInput.simulate('change', { target: { value: '8-78,7-85', name: variations } })
+    // inputMatchesWithProductVariation()
     // TODO  do variationbadges test
     // findAndDebug(component, variationsBadges)
     // expect(findByTestAtrr(component, variationsBadges).children).toBe(product.variations.length)

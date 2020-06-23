@@ -29,37 +29,10 @@ interface meta {
 
 const units = ['g', 'kg', 'ml', 'l']
 
-function findCategory(param: string, cats: ModelCategory[]) {
+interface EventTarget {
+    name: string,
+    value: string
 
-    const foundCategory = cats.find((v) => v.name === param)
-
-    if (foundCategory) {
-        return foundCategory
-    } else {
-        // ct('ufc')
-        console.log(cats[0])
-
-        return cats[0]
-    }
-}
-
-function findSubCategory(param: string, cat: ModelCategory) {
-    const foundCategory = cat.subcategories
-        .find((v) => v === param)
-    if (foundCategory) {
-        return foundCategory
-    } else {
-        return cat.subcategories[0]
-    }
-}
-
-function variationToBadges(params: VariationModel[], unit: string) {
-    // Should not use array index as key but it is resonable here
-    return params.map((v, index) => (<span key={index} className="m-2 badge badge-pill badge-light">{`${v.value}${unit} at ${v.price}`}</span>))
-}
-
-function categoriesToStrings(params: ModelCategory[],) {
-    return params.map(v => v.name)
 }
 
 function getMeta(currstate: ProductModel, categorylist: ModelCategoryList) {
@@ -91,50 +64,59 @@ const Product = (props: Props) => {
 
     const [meta, setmeta] = useState<meta>(getMeta(state.product, categorylist))
 
+
+
     // To autocorrect products
     if (meta.currentCategory.name !== state.product.category || meta.currentSubCategory !== state.product.subcategory) {
         stateChangeHandler({ ...state, product: { ...state.product, subcategory: meta.currentSubCategory, category: meta.currentCategory.name } })
     }
+    // To autocorrect units
+    if (!units.includes(state.product.unit)) {
+        stateChangeHandler({ ...state, product: { ...state.product, unit: units[0] } })
+    }
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(e: EventTarget) {
+        const { name, value } = e
 
-        const { name, value } = event.target
 
-        if (name === title) {
-            stateChangeHandler({ ...state, product: { ...state.product, title: value } })
+        switch (name) {
+            case title:
+                stateChangeHandler({ ...state, product: { ...state.product, title: value } })
+                break
 
-        } else if (name === variations) {
-            setVariationString(value)
-            stateChangeHandler({ ...state, product: { ...state.product, variations: stringToVariations(value) } })
+            case variations:
+                setVariationString(value)
+                stateChangeHandler({ ...state, product: { ...state.product, variations: stringToVariations(value) } })
 
-        } else console.error(`Invalid formevent ${event}`)
+                break
+
+            case category:
+                const ns = { ...state, product: { ...state.product, category: value } }
+                stateChangeHandler(ns)
+                setmeta(getMeta(ns.product, categorylist))
+                break
+
+            case unit:
+                stateChangeHandler({ ...state, product: { ...state.product, unit: value } })
+                break
+
+            case subcategory:
+                const st = stateChangeHandler({ ...state, product: { ...state.product, subcategory: value } })
+                setmeta(getMeta(st.product, categorylist))
+                break
+
+            default: console.error(`Invalid formevent ${e}`)
+                break
+        }
 
     }
 
     function stateChangeHandler(state: ProductModelMeta) {
-        onChange(state)
         setState(state)
         return state
     }
 
-
-    function handleSubCategoryChange(event: string) {
-        const st = stateChangeHandler({ ...state, product: { ...state.product, subcategory: event } })
-        setmeta(getMeta(st.product, categorylist))
-    }
-
-    function handleUnitChange(event: string) {
-        stateChangeHandler({ ...state, product: { ...state.product, unit: event } })
-    }
-
-    function handleCategoryChange(event: string) {
-        // const a = event
-        // state.product.category = event
-        const ns = { ...state, product: { ...state.product, category: event } }
-        stateChangeHandler(ns)
-        setmeta(getMeta(ns.product, categorylist))
-    }
-
+    onChange(state)
     return (
         <div className="mt-2 col text-center" >
             <div className="container text-center ">
@@ -145,18 +127,18 @@ const Product = (props: Props) => {
 
             <Form>
                 <Form.Group >
-                    <Form.Control data-test={title} name={title} value={state.product.title} onChange={handleChange} placeholder="Add Product Title" />
+                    <Form.Control data-test={title} name={title} value={state.product.title} onChange={(e) => handleChange(getEventTarget(e))} placeholder="Add Product Title" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Control data-test={variations} placeholder="Add Variations" name={variations} onChange={handleChange} value={variationString} />
+                    <Form.Control data-test={variations} placeholder="Add Variations" name={variations} onChange={(e) => handleChange(getEventTarget(e))} value={variationString} />
                     <small className='ml-1'>Eg. 1-50 means 1{state.product.unit} at 50 Rs</small>
                 </Form.Group>
             </Form>
             <div data-test={variationsBadges} >
                 {variationToBadges(state.product.variations, state.product.unit)}</div>
-            {makeDropDowns(units, state.product.unit, '', handleUnitChange)}
-            {makeDropDowns(meta.categories, meta.currentCategory.name, 'p-3', handleCategoryChange)}
-            {makeDropDowns(meta.currentCategory.subcategories, meta.currentSubCategory, '', handleSubCategoryChange)}
+            {makeDropDowns(units, state.product.unit, '', (value) => handleChange({ value, name: unit }))}
+            {makeDropDowns(meta.categories, state.product.category, 'p-3', (value) => handleChange({ value, name: category }))}
+            {makeDropDowns(meta.currentCategory.subcategories, state.product.subcategory, '', (value) => handleChange({ value, name: subcategory }))}
             <hr />
         </div>
 
@@ -164,3 +146,37 @@ const Product = (props: Props) => {
 }
 
 export default Product
+
+function findCategory(param: string, cats: ModelCategory[]) {
+
+    const foundCategory = cats.find((v) => v.name === param)
+
+    if (foundCategory) {
+        return foundCategory
+    } else {
+        return cats[0]
+    }
+}
+
+function findSubCategory(param: string, cat: ModelCategory) {
+    const foundCategory = cat.subcategories
+        .find((v) => v === param)
+    if (foundCategory) {
+        return foundCategory
+    } else {
+        return cat.subcategories[0]
+    }
+}
+
+function variationToBadges(params: VariationModel[], unit: string) {
+    // Should not use array index as key but it is resonable here
+    return params.map((v, index) => (<span key={index} className="m-2 badge badge-pill badge-light">{`${v.value}${unit} at ${v.price}`}</span>))
+}
+
+function categoriesToStrings(params: ModelCategory[],) {
+    return params.map(v => v.name)
+}
+function getEventTarget(event: React.ChangeEvent<any>): EventTarget {
+    const { name, value } = event.target
+    return { name, value }
+}

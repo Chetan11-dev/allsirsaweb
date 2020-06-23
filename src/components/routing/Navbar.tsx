@@ -1,7 +1,37 @@
 import React from 'react'
-import { routes } from './routes'
-import { appname } from '../../utils/apputils'
 
+import { appname } from '../../utils/apputils'
+export interface Routes {
+    path: string
+    title: string
+    component: JSX.Element
+}
+
+const routes: Routes[] = [{
+    component: <div />,
+    path: 'orders',
+    title: 'Orders',
+}, {
+    component: <div />,
+    path: 'completedorders',
+    title: 'Completed Orders',
+}, {
+    component: <div />,
+    path: 'cancelledorders',
+    title: 'Cancelled Orders',
+}, {
+    component: <div />,
+    path: 'add-products',
+    title: 'Add Products',
+}, {
+    component: <div />,
+    path: 'edit-products',
+    title: 'Edit Products',
+}, {
+    component: <div />,
+    path: 'profile',
+    title: 'Profile',
+},]
 
 export const Navbar = () => {
 

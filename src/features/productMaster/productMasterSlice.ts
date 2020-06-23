@@ -5,8 +5,9 @@ import { RootState } from '../../app/store'
 import { ProductModelMeta } from '../../components/product/Product'
 import { setAlert } from '../alert/alertSlice'
 import { purifyState, getProduct } from './productMasterSliceUtils'
-import { product } from './ProductMaster'
+// import { product } from './ProductMaster'
 import { isListNotEmpty, isListEmpty } from '../../utils/tsUtils'
+import { product } from '../../components/product/Product.spec'
 
 
 export interface ProductMasterState {
@@ -26,6 +27,7 @@ export const testState: ProductMasterState = {
             subcategory: '****',
             title: 'p2'
         }
+
     }],
     inCorrect: [{ ...product, product: { ...product.product, category: '****', title: '', variations: [] } }]
 }
