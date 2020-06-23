@@ -39,14 +39,15 @@ export function isAnyEmpty(ls: string[]) {
 }
 
 export const defaultunit = 'g'
-export const defaultProduct = {
+export const defaultProduct: ProductModelMeta = {
     product: {
         title: '',
         unit: defaultunit,
         variations: [],
         category: '',
         subcategory: '',
-    }
+    },
+    imageFile: ''
 }
 
 export function getProduct(): ProductModelMeta {

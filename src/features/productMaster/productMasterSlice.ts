@@ -6,6 +6,7 @@ import { ProductModelMeta } from '../../components/product/Product'
 import { setAlert } from '../alert/alertSlice'
 import { purifyState, getProduct } from './productMasterSliceUtils'
 import { product } from './ProductMaster'
+import { isListNotEmpty, isListEmpty } from '../../utils/tsUtils'
 
 
 export interface ProductMasterState {
@@ -77,30 +78,55 @@ export async function addToFirestore(shouldThrowError: boolean) {
 
 }
 
+
+
 export async function addProductsToDB(s: ProductMasterState, dispatch: Dispatch<any>) {
 
-    //  dispatch loading state 
-    setLoader(dispatch)
 
     const ns = purifyState(s)
-    const pendingprods = ns.pending.length
 
-    const isSuccesFull = await addToFirestore(false)
-    if (isSuccesFull) {
+    if (isListNotEmpty(ns.inCorrect)) {
+        const len = ns.inCorrect.length
         setAlert({
-            msg: `Congratulations you have sucessfully added ${pendingprods} products to your store !!!',type:'success`, type: 'success'
+            msg: `${len} products details are incorrect`, type: 'danger'
         }, dispatch)
-        s.pending = []
-        dispatch(updateState(s))
+
+    }
+
+    if (isListEmpty(ns.pending)) {
+        return
+    }
+
+    setLoader(dispatch)
+    const isSuccesFull = await addToFirestore(false)
+
+    if (isSuccesFull) {
+        const pendingprods = ns.pending.length
+        setAlert({
+            msg: `Congratulations you have sucessfully added ${pendingprods} products to your store`, type: 'success'
+        }, dispatch)
+        ns.pending = []
+
+        dispatch(updateState(ns))
     } else {
         setAlert({
             msg: `Sorry we were unable to add products to your store. Please try again if the issue still persists. Feel free to contact our support team at 9996888551`, type: 'danger',
         }, dispatch, 7)
 
-        dispatch(updateState(s))
+        dispatch(updateState(ns))
     }
     //  dispatch loading: false  state 
     unsetLoader(dispatch)
+}
+
+
+export async function addNewProduct(dispatch: Dispatch<any>) {
+
+    dispatch(addProduct())
+
+    setAlert({
+        msg: `Added 1 product`, type: 'success'
+    }, dispatch)
 }
 
 export const selectProductMaster = (state: RootState) => {

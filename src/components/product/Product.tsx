@@ -7,7 +7,7 @@ import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory
 import { useState } from 'react'
 import { stringToVariations, variationsToString } from './variation'
 
-import { ct, snapshottoarray, toJsStr, beautify, log, logo, logt } from '../../utils/logutils'
+import { ct, snapshottoarray, toJsStr, beautify, logo, logt } from '../../utils/logutils'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ProductModel,
@@ -34,7 +34,6 @@ function findCategory(param: string, cats: ModelCategory[]) {
     const foundCategory = cats.find((v) => v.name === param)
 
     if (foundCategory) {
-        ct('fc')
         return foundCategory
     } else {
         // ct('ufc')
@@ -83,10 +82,6 @@ function makeDropDowns(p: string[], defaultValue: string, classes: string, onSel
 export const title = 'title', variations = 'variations', variationsBadges = 'variationsBadges', category = 'category', subcategory = 'subcategory', unit = 'unit'
 
 const Product = (props: Props) => {
-    React.useEffect(() => {
-        log(props.product)
-
-    }, [])
 
     const { product, categorylist, onChange } = props
 
@@ -162,6 +157,7 @@ const Product = (props: Props) => {
             {makeDropDowns(units, state.product.unit, '', handleUnitChange)}
             {makeDropDowns(meta.categories, meta.currentCategory.name, 'p-3', handleCategoryChange)}
             {makeDropDowns(meta.currentCategory.subcategories, meta.currentSubCategory, '', handleSubCategoryChange)}
+            <hr />
         </div>
 
     )
