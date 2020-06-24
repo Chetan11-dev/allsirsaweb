@@ -3,7 +3,8 @@ import { initalReducerState, stateUpdate } from '../../utils/reducertestutils'
 import productMasterReducer, { initialState, updateState, ProductMasterState, addProduct } from './productMasterSlice'
 import { data } from '../../api/databaseApi/data'
 import { ProductModelMeta } from '../../components/product/Product'
-import { isValidProduct, isAnyEmpty, defaultProduct } from './productMasterSliceUtils'
+import { isValidProduct, isAnyEmpty, defaultProduct, purifyState, getDefaultProduct } from './productMasterSliceUtils'
+import { CorrectProduct } from '../../stories/Nav'
 
 
 describe('Product Master test', () => {
@@ -35,6 +36,58 @@ describe('Product Master test', () => {
     it('isAnyEmpty test ', () => {
         expect(isAnyEmpty(['   ', '2', '3'])).toBeTruthy()
         expect(isAnyEmpty(['  1  ', '2', '3'])).toBeFalsy()
+        expect(isAnyEmpty(['              '])).toBeTruthy()
+    })
+
+
+
+    var corectproduct: ProductModelMeta = {
+        imageFile: undefined,
+        product: {
+            subcategory: "Pulses",
+            unit: 'g',
+            variations: [
+                {
+                    price: 70,
+                    value: 20
+                }, {
+                    price: 90,
+                    value: 30
+                }
+            ],
+            productimage: undefined,
+            sid: undefined,
+            id: undefined,
+            category: "Grocery & Staples",
+            title: "Arhar",
+
+        }
+    }
+
+    it('isValidProduct test ', () => {
+
+        expect(isValidProduct(corectproduct)).toBeTruthy()
+        expect(isValidProduct({ ...corectproduct, product: { ...corectproduct.product, subcategory: '      ' } })).toBeFalsy()
+        expect(isValidProduct({ ...corectproduct, product: { ...corectproduct.product, title: '      ' } })).toBeFalsy()
+        expect(isValidProduct({ ...corectproduct, product: { ...corectproduct.product, title: '      ', variations: [] } })).toBeFalsy()
+        expect(isValidProduct({ ...corectproduct, product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } })).toBeFalsy()
+
+
+
+    })
+    it('getproduct test', () => {
+        expect(isValidProduct(getDefaultProduct())).toBeFalsy()
+
+        expect(isValidProduct({ ...getDefaultProduct(), product: { ...corectproduct.product, title: 'Apple', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeTruthy()
+        expect(isValidProduct({ ...getDefaultProduct(), product: { ...corectproduct.product, title: '   ', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeFalsy()
+    })
+    it('purifyState test ', () => {
+        expect(purifyState({ inCorrect: [{ product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } }, { ...corectproduct }], pending: [{ ...corectproduct }] }).pending.length).toBe(2)
+        expect(purifyState({ inCorrect: [{ product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } }, { ...corectproduct }], pending: [{ ...corectproduct }] }).inCorrect.length).toBe(1)
+        expect(purifyState({ inCorrect: [], pending: [{ product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } },] }).inCorrect.length).toBe(1)
+        expect(purifyState({ inCorrect: [], pending: [{ product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } },] }).pending.length).toBe(0)
+        expect(purifyState({ inCorrect: [{ ...corectproduct }, { ...corectproduct }], pending: [{ ...corectproduct }] }).pending.length).toBe(3)
+
     })
 
     it('filterProduct test ', () => {

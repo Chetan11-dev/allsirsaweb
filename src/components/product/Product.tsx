@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { stringToVariations, variationsToString } from './variation'
 
 import { ct, snapshottoarray, toJsStr, beautify, logo, logt } from '../../utils/logutils'
+import { actionsData } from '../../stories/Nav'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ProductModel,
@@ -114,9 +115,11 @@ const Product = (props: Props) => {
     function stateChangeHandler(state: ProductModelMeta) {
         setState(state)
         return state
-    }
 
+    }
     onChange(state)
+    
+
     return (
         <div className="mt-2 col text-center" >
             <div className="container text-center ">

@@ -13,11 +13,11 @@ export function isValidProduct(param: ProductModelMeta) {
         // Invalid 
         return false
     }
-    //TODO TAKE IMAGE FILE
 
-    if (!productimage && !param.imageFile) {
-        return false
-    }
+    //TODO TAKE IMAGE FILE then uncomment
+    // if (!productimage && !param.imageFile) {
+    //     return false
+    // }
 
     return true
 }
@@ -33,7 +33,6 @@ export function purifyState(s: ProductMasterState): ProductMasterState {
 
 }
 
-
 export function isAnyEmpty(ls: string[]) {
     if (ls.some(isEmptyString)) { return true } else return false
 }
@@ -46,10 +45,13 @@ export const defaultProduct: ProductModelMeta = {
         variations: [],
         category: '',
         subcategory: '',
+        productimage: undefined,
+        sid: undefined,
+        id: undefined,
     },
-    imageFile: ''
+    imageFile: undefined
 }
 
-export function getProduct(): ProductModelMeta {
+export function getDefaultProduct(): ProductModelMeta {
     return { ...defaultProduct }
 }

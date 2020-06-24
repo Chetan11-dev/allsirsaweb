@@ -4,11 +4,30 @@ import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 import { ProductModelMeta } from '../../components/product/Product'
 import { setAlert } from '../alert/alertSlice'
-import { purifyState, getProduct } from './productMasterSliceUtils'
+import { purifyState, getDefaultProduct } from './productMasterSliceUtils'
 // import { product } from './ProductMaster'
 import { isListNotEmpty, isListEmpty } from '../../utils/tsUtils'
-import { product } from '../../components/product/Product.spec'
-
+// import { product } from '../../components/product/Product.spec'
+var product: ProductModelMeta = {
+    product: {
+      subcategory: "Pulses",
+      unit: 'kg',
+      variations: [
+        {
+          price: 70,
+          value: 20
+        }, {
+          price: 90,
+          value: 30
+        }
+      ],
+      productimage: "https://picsum.photos/id/237/200/300",
+      category: "Grocery & Staples",
+      title: "Arhar",
+      sid: '1',
+      id: '1'
+    }
+  }
 
 export interface ProductMasterState {
     pending: ProductModelMeta[],
@@ -44,7 +63,7 @@ export const productMaster = createSlice({
             return action.payload
         },
         addProduct: (state,) => {
-            const p = getProduct()
+            const p = getDefaultProduct()
             state.pending.unshift(p)
             return state
         },
