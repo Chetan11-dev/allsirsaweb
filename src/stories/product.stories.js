@@ -6,11 +6,10 @@ export {
 
   Defaultproduct, CorrectProduct,
   WrongProduct
-} from './ProductDemos'
+} from './product.storiests'
 
 
 
 export default {
   title: 'Product ',
-
 }

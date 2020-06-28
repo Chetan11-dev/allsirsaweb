@@ -1,9 +1,9 @@
 // import { queryFirestore } from 'firewings'
 
-import firebase from '../services/firebase'
-import { data } from './data'
-import { ModelCategoryList } from '../models/ModelCategory'
-import { Api } from './../services/Api';
+import firebase from './src/api/services/firebase'
+import { data } from './src/api/databaseApi/data'
+import { ModelCategoryList } from './src/api/models/ModelCategory'
+import { Api } from './src/api/services/Api';
 
 
 

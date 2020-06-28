@@ -4,7 +4,7 @@ import productMasterReducer, { initialState, updateState, ProductMasterState, ad
 import { data } from '../../api/databaseApi/data'
 import { ProductModelMeta } from '../../components/product/Product'
 import { isValidProduct, isAnyEmpty, defaultProduct, purifyState, getDefaultProduct } from './productMasterSliceUtils'
-import { CorrectProduct } from '../../stories/ProductDemos'
+import { CorrectProduct } from '../../stories/product.storiests'
 
 
 describe('Product Master test', () => {

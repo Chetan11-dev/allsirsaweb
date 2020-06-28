@@ -9,6 +9,7 @@ export class CategoryApi {
     ref: firebase.firestore.CollectionReference
     constructor() {
         this.ref = firebase.firestore().collection('category')
+    
     }
 
     async getDataCollection(): Promise<ModelCategoryList> {
