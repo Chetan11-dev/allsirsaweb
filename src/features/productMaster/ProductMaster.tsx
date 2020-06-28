@@ -1,7 +1,7 @@
 import { setAlert } from '../alert/alertSlice'
 import React, { useEffect } from 'react'
 
-import { ProductModel, } from '../../api/models/ModelProduct'
+import { ModelProduct, } from '../../api/models/ModelProduct'
 
 import { ModelCategoryList } from '../../api/models/ModelCategory'
 import { CategoryApi } from '../../api/databaseApi/categoryApi'
@@ -15,7 +15,7 @@ import './om.css'
 import { type } from 'os'
 
 interface Props {
-    product: ProductModel,
+    product: ModelProduct,
     catlist: ModelCategoryList
 }
 

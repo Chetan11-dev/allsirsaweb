@@ -40,9 +40,9 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface ProductModel {
+export interface ModelProduct {
     category: string
-    variations: VariationModel[]
+    variations: ModelVariation[]
     unit: string
     subcategory: string
     productimage?: string
@@ -51,7 +51,7 @@ export interface ProductModel {
     title: string
 }
 
-export interface VariationModel {
+export interface ModelVariation {
     price: number
     value: number
 }
@@ -59,11 +59,11 @@ export interface VariationModel {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toProductModel(json: string): ProductModel {
+    public static toProductModel(json: string): ModelProduct {
         return cast(JSON.parse(json), r("ProductModel"))
     }
 
-    public static productModelToJson(value: ProductModel): string {
+    public static productModelToJson(value: ModelProduct): string {
         return JSON.stringify(uncast(value, r("ProductModel")), null, 2)
     }
 }

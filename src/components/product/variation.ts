@@ -1,6 +1,6 @@
 // Dont destruce they make true copies
 
-import { VariationModel } from '../../api/models/ModelProduct'
+import { ModelVariation } from '../../api/models/ModelProduct'
 import { isListEmpty } from '../../utils/tsUtils'
 // import { logt } from '../../utils/apputils'
 
@@ -20,13 +20,13 @@ export function isValidVariation(params: string) {
     } else return false
 }
 
-function toVariation(params: string): VariationModel {
+function toVariation(params: string): ModelVariation {
     const [value, price] = splitTrim(params, '-')
     return { price: parseInt(price), value: parseInt(value) }
 }
 
 
-export function stringToVariations(s: string): VariationModel[] {
+export function stringToVariations(s: string): ModelVariation[] {
     // can never happen if (s == null || !s) return []
 
     var ls = splitTrim(s, ',')
@@ -35,9 +35,9 @@ export function stringToVariations(s: string): VariationModel[] {
     // map to variation
     return ls.map(toVariation)
 }
-function variationToString(v: VariationModel) { return `${v.value}-${v.price}` }
+function variationToString(v: ModelVariation) { return `${v.value}-${v.price}` }
 
-export function variationsToString(params: VariationModel[] | null | undefined): string {
+export function variationsToString(params: ModelVariation[] | null | undefined): string {
 
     if (isListEmpty(params)) {
         return ''

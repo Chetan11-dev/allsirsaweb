@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ProductModel, VariationModel } from '../../api/models/ModelProduct'
+import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
 import { Dropdown, DropdownButton, Form } from 'react-bootstrap'
 
 import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory'
@@ -11,7 +11,7 @@ import { ct, snapshottoarray, toJsStr, beautify, logo, logt } from '../../utils/
 import { actionsData } from '../../stories/ProductDemos'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
-    product: ProductModel,
+    product: ModelProduct,
     imageFile?: any
 }
 
@@ -36,7 +36,7 @@ interface EventTarget {
 
 }
 
-function getMeta(currstate: ProductModel, categorylist: ModelCategoryList) {
+function getMeta(currstate: ModelProduct, categorylist: ModelCategoryList) {
     const st = {
         currentCategory: findCategory(currstate.category, categorylist.categories),
         categories: categoriesToStrings(categorylist.categories),
@@ -171,7 +171,7 @@ function findSubCategory(param: string, cat: ModelCategory) {
     }
 }
 
-function variationToBadges(params: VariationModel[], unit: string) {
+function variationToBadges(params: ModelVariation[], unit: string) {
     // Should not use array index as key but it is resonable here
     return params.map((v, index) => (<span key={index} className="m-2 badge badge-pill badge-light">{`${v.value}${unit} at ${v.price}`}</span>))
 }

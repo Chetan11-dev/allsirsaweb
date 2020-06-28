@@ -1,5 +1,5 @@
 // Dont destruce they make true copies
-import { VariationModel } from '../api/models/ModelProduct'
+import { ModelVariation } from '../api/models/ModelProduct'
 
 
 function isValidVariation(params: string) {
@@ -11,13 +11,13 @@ function isValidVariation(params: string) {
     } else return false
 }
 
-function toVariation(params: string): VariationModel {
+function toVariation(params: string): ModelVariation {
     const [value, price] = params.split('-')
     return { price: parseInt(price), value: parseInt(value) }
 }
 
 
-function stringToVariations(s: string): VariationModel[] {
+function stringToVariations(s: string): ModelVariation[] {
     var ls = s.split(',').map((s) => s.trim())
     // filter it 
     ls = ls.filter(isValidVariation)
@@ -25,7 +25,7 @@ function stringToVariations(s: string): VariationModel[] {
     return ls.map(toVariation)
 }
 
-function variationsToString(params: VariationModel): string {
+function variationsToString(params: ModelVariation): string {
     // map to a string 
     // reduce with commass
     return ''

@@ -23,5 +23,12 @@ export function isEmptyString(p: string | Empty) {
 export function isNotValidString(p: string | Empty) {
     return !isEmptyString(p)
 }
-
-// import { isEmpty, isListNotEmpty , isListEmpty,isInValidString ,isValidString} from '';import { type } from '../app/store'
+export function createObFromList<A>(ls: string[] , f: (v: string) => A )  {
+    const l: any = {}
+    Object.assign({},)
+    ls.forEach(e => {
+        l[e] = f(e)
+    })
+    return l
+}
+// import { isEmpty, isListNotEmpty , isListEmpty,isInValidString ,createObFromList,isValidString} from '';import { type } from '../app/store'

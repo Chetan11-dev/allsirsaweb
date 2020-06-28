@@ -38,7 +38,7 @@
     "testr": "react-scripts test",
     "test": "jest --watch",
     "removeunusedimport": "node ./node_modules/tslint/bin/tslint --config tslint-imports.json --fix --project .",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 3333 -s public",
     "storybookcustom": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -s public",
     "ris": "npm install && npm run start",
