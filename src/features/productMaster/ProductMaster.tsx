@@ -1,7 +1,7 @@
 import { setAlert } from '../alert/alertSlice'
 import React, { useEffect } from 'react'
 
-import { ModelProduct, } from '../../api/models/ModelProduct'
+import { ModelProduct, } from '../../../ModelProduct'
 
 import { ModelCategoryList } from '../../api/models/ModelCategory'
 import { CategoryApi } from '../../api/databaseApi/categoryApi'

@@ -7,7 +7,7 @@
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
-import {ModelProduct} from './ModelProduct'
+import {ModelProduct} from '../../../ModelProduct'
 export interface ModelOrder {
     sid:       string;
     id:        string;

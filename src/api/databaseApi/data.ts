@@ -1,6 +1,6 @@
 import { ModelOrder } from './../models/ModelOrder';
 import Product from './../../components/product/Product';
-import { ModelProduct as ModelProduct } from './../models/ModelProduct';
+import { ModelProduct as ModelProduct } from '../../../ModelProduct';
 import { ModelCategoryList } from '../models/ModelCategory'
 const sellers =  [
     {

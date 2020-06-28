@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
+import { ModelProduct, ModelVariation } from '../../../ModelProduct'
 import { Dropdown, DropdownButton, Form } from 'react-bootstrap'
 
 import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory'

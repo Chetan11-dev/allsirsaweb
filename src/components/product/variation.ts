@@ -1,6 +1,6 @@
 // Dont destruce they make true copies
 
-import { ModelVariation } from '../../api/models/ModelProduct'
+import { ModelVariation } from '../../../ModelProduct'
 import { isListEmpty } from '../../utils/tsUtils'
 // import { logt } from '../../utils/apputils'
 
