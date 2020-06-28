@@ -1,26 +1,26 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+// import {Router, Route} from 'react-router';
 import React from 'react'
 import { Alert } from '../features/alert/Alert'
 
 import { AppLoader } from '../features/appLoader/AppLoader'
 import { ProductMaster } from '../features/productMaster/ProductMaster'
-import { getRoutes, routes } from '../components/routing/routes'
+import { toRoutes as getRoutes, routes, addHomeRoute } from '../components/routing/routes'
+import { Navbar } from '../components/routing/Navbar'
 
 
 const App = () => {
 
-    const rs = getRoutes(routes)
+    const  {appRoutes,rawRoutes} = getRoutes(routes , ProductMaster)
+
     return (
         <div>
             <Router>
                 < Alert />
                 <AppLoader />
-                <ProductMaster />
-                {/* {rs[0]} */}
-
-
+                <Navbar routes={rawRoutes} />
                 <Switch>
-                    {rs}
+                    {appRoutes}
                 </Switch>
 
             </Router>

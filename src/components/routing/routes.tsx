@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import { Button, NavDropdown, Form, FormControl, Nav } from 'react-bootstrap'
-export interface Routes {
+import ProductMaster from '../../features/productMaster/ProductMaster'
+export interface RouteData {
     path: string
     title: string
     component: React.ComponentType<any>
@@ -9,7 +10,7 @@ export interface Routes {
 
 
 
-export const routes: Routes[] = [{
+export const routes: RouteData[] = [{
     component: Button,
     path: '/orders',
     title: 'Orders',
@@ -35,11 +36,23 @@ export const routes: Routes[] = [{
     title: 'Profile',
 },]
 
-export function getRoutes(routes: Routes[]) {
-    const ls = routes.map((r) => <Route exact path={r.path} component={r.component} />)
-
-    // addAllRoutes
-    // ls.push(<Route component={Button} />)
-    return ls
+export function addHomeRoute(component: React.ComponentType<any>) {
+    return {
+        component,
+        path: '/',
+        title: 'Home'
+    }
 }
 
+export function toRoutes(routes: RouteData[], initialComponent: React.ComponentType<any>, shouldAddNotFound = true) {
+    const rs = [...routes]
+
+    rs.unshift(addHomeRoute(initialComponent))
+
+    const ls = rs.map((r) => <Route exact path={r.path} component={r.component} />)
+
+    if (shouldAddNotFound) {
+        ls.push(<Route component={() => <h1> 404 not found</h1>} />)
+    }
+    return { appRoutes: ls, rawRoutes: rs }
+}
