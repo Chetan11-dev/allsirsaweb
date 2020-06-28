@@ -39,8 +39,20 @@
     "test": "jest --watch",
     "removeunusedimport": "node ./node_modules/tslint/bin/tslint --config tslint-imports.json --fix --project .",
     "storybook": "start-storybook -p 9009 -s public",
-    "storybooko": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -s public"
+    "storybookcustom": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -s public",
+    "ris": "npm install && npm run start",
+    "rs": "npm run start",
+    "ni": "npm install ",
+    "gp": "git push ",
+    "gpo": "git init && git add . && git commit -m 'Initial Commit' ",
+    "gd": "git diff",
+    "gco": "git checkout",
+    "gc": "git add . && git commit -m ",
+    "gcap": "git add . && git commit -m && git push",
+    "b": "cd ..",
+    "bb": "cd .. && cd ..",
+    "bbb": "cd .. && cd .. && cd .."
   },
   "eslintConfig": {
     "extends": "react-app"
