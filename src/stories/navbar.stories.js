@@ -6,6 +6,7 @@ import { routes } from '../components/routing/routes'
 export const NavbarComponent = () => (
     <Navbar routes={routes} />
 )
+
 export default {
     title: 'Navbar '
 }

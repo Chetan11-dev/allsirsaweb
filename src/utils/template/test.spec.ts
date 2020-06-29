@@ -1,4 +1,4 @@
-import { timer300 } from '../../utils/asynUtils'
+import { timer300 } from '../asynUtils'
 describe(' test', () => {
 
     it('should ', () => {

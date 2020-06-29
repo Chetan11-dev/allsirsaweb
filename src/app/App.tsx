@@ -8,10 +8,10 @@ import { ProductMaster } from '../features/productMaster/ProductMaster'
 import { toRoutes as getRoutes, routes, addHomeRoute } from '../components/routing/routes'
 import { Navbar } from '../components/routing/Navbar'
 
-
+import './app.css'
 const App = () => {
 
-    const  {appRoutes,rawRoutes} = getRoutes(routes , ProductMaster)
+    const { appRoutes, rawRoutes } = getRoutes(routes, ProductMaster)
 
     return (
         <div>
