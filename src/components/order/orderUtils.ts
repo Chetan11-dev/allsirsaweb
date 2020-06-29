@@ -5,8 +5,9 @@ import { Row, Col, Container } from 'react-bootstrap'
 import { ModelProduct, ModelVariation } from '../../../ModelProduct'
 import { data } from '../../api/databaseApi/data'
 
-function price(o: ModelOrder) {
-    // 25 g * 2 = Rs 50
+// calculate price 
+function calculatePrice(o: ModelOrder) {
+    
     return o.units * o.product.variations[0].price
 }
 
@@ -15,9 +16,9 @@ function variation(o: ModelOrder) {
     return o.product.variations[0]
 }
 
-function variant(p: ModelVariation, unit: string) {
-    // 25 g 
+// 25 g 
+function calculateVariant(p: ModelVariation, unit: string) {
     return `${p.value} ${unit}`
 }
 
-export {price , variant,variation}
+export {calculatePrice , calculateVariant ,variation}

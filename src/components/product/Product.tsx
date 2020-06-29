@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ModelProduct, ModelVariation } from '../../../ModelProduct'
-import { Dropdown, DropdownButton, Form } from 'react-bootstrap'
+import { Dropdown, DropdownButton, Form, Badge } from 'react-bootstrap'
 
 import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory'
 // import { timer } from '../../features/loader/loader.spec'
@@ -9,6 +9,7 @@ import { stringToVariations, variationsToString } from './variation'
 
 import { ct, snapshottoarray, toJsStr, beautify, logo, logt } from '../../utils/logutils'
 import { actionsData } from '../../stories/product.storiests'
+import { createBadge } from '../../utils/bootstrapUtils'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ModelProduct,
@@ -116,9 +117,9 @@ const Product = (props: Props) => {
         setState(state)
         return state
     }
-    
+
     onChange(state)
-    
+
 
     return (
         <div className="mt-2 col text-center" >
@@ -173,7 +174,7 @@ function findSubCategory(param: string, cat: ModelCategory) {
 
 function variationToBadges(params: ModelVariation[], unit: string) {
     // Should not use array index as key but it is resonable here
-    return params.map((v, index) => (<span key={index} className="m-2 badge badge-pill badge-light">{`${v.value}${unit} at ${v.price}`}</span>))
+    return params.map((v, index) => (createBadge({ info: `${v.value}${unit} at ${v.price}` })))
 }
 
 function categoriesToStrings(params: ModelCategory[],) {

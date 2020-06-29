@@ -1,8 +1,10 @@
-import { ModelOrder } from './../models/ModelOrder';
-import Product from './../../components/product/Product';
-import { ModelProduct as ModelProduct } from '../../../ModelProduct';
+import firebase from 'firebase'
+import { ModelOrder } from './../models/ModelOrder'
+import Product from './../../components/product/Product'
+import { ModelProduct as ModelProduct } from '../../../ModelProduct'
 import { ModelCategoryList } from '../models/ModelCategory'
-const sellers =  [
+import Timestamp = firebase.firestore.Timestamp
+const sellers = [
     {
         categories: [
             'milk',
@@ -21,9 +23,9 @@ const sellers =  [
         name: 'Chandra',
         id: '2',
     }
-] 
+]
 
-const  products :ModelProduct[] =  [{
+const products: ModelProduct[] = [{
     category: 'grocery & staples',
     variations: [
         {
@@ -67,23 +69,23 @@ const  products :ModelProduct[] =  [{
     title: 'fruit juice'
 }]
 
-const orders :ModelOrder[]= [{
-    sid:'1' , 
-    id:'25' ,
-    units:2 , 
-    product :products[1] , 
-    status :'pending' , 
-    createdAt:'17 July 2020',
-} ,{
-    sid:'1' , 
-    id:'26' ,
-    units:2 , 
-    product :products[1] , 
-    status :'pending' , 
-    createdAt:'17 July 2020',
-} ]
+const orders: ModelOrder[] = [{
+    sid: '1',
+    id: '25',
+    units: 2,
+    product: products[1],
+    status: 'pending',
+    createdAt: new Timestamp(0, 1562524200),
+}, {
+    sid: '1',
+    id: '26',
+    units: 2,
+    product: products[1],
+    status: 'pending',
+    createdAt: new Timestamp(0, 1562524200),
+}]
 
-const categories :ModelCategoryList= {
+const categories: ModelCategoryList = {
     categories: [
         {
             image: 'imagee',
@@ -155,7 +157,8 @@ const categories :ModelCategoryList= {
 
 
 export const data = {
-    orders, 
+    orders,
     products,
     sellers,
-    categories}
+    categories
+}
