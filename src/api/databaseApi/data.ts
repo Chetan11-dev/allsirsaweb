@@ -1,9 +1,10 @@
 import firebase from 'firebase'
 import { ModelOrder } from './../models/ModelOrder'
 import Product from './../../components/product/Product'
-import { ModelProduct as ModelProduct } from '../../../ModelProduct'
+import { ModelProduct as ModelProduct } from '../models/ModelProduct'
 import { ModelCategoryList } from '../models/ModelCategory'
-import Timestamp = firebase.firestore.Timestamp
+
+
 const sellers = [
     {
         categories: [
@@ -75,14 +76,14 @@ const orders: ModelOrder[] = [{
     units: 2,
     product: products[1],
     status: 'pending',
-    createdAt: new Timestamp(0, 1562524200),
+    createdAt: new firebase.firestore.Timestamp(1562524200, 0),
 }, {
     sid: '1',
     id: '26',
     units: 2,
     product: products[1],
     status: 'pending',
-    createdAt: new Timestamp(0, 1562524200),
+    createdAt: new firebase.firestore.Timestamp(1562524200, 0),
 }]
 
 const categories: ModelCategoryList = {

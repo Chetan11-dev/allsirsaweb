@@ -38,6 +38,6 @@
     "typePatches"
   ],
   "include": [
-    "src", "ModelProduct.ts", "orderApi.ts"
+    "src", "src/api/models/ModelProduct.ts", "src/api/databaseApi/orderApi.ts"
   ]
 }

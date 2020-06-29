@@ -1,9 +1,8 @@
-
 import React from 'react'
 import { ModelOrder } from './../../api/models/ModelOrder'
 import { beautify } from './../../utils/logutils'
 import { Row, Col, Container } from 'react-bootstrap'
-import { ModelProduct, ModelVariation } from '../../../ModelProduct'
+import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
 import { calculatePrice, calculateVariant, variation } from './orderUtils'
 import { BadgeInfo, createBadge, createBadges } from '../../utils/bootstrapUtils'
 
@@ -42,14 +41,5 @@ export const Order = ({ order, onChange, order: { product: { category, variation
                 {createBadges(bs)}
             </div>
         </div>
-
     )
 }
-
-// <div>Hello</div>
-
-// <span>Hello</span>
-// <span>Hello</span>
-// <div className="row"> <span>Hello</span>
-//     <div className="col-12 bg-dark ">.col-6 </div>
-// </div

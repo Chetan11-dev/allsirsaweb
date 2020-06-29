@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ModelProduct, ModelVariation } from '../../../ModelProduct'
+
 import { Dropdown, DropdownButton, Form, Badge } from 'react-bootstrap'
 
 import { ModelCategoryList, ModelCategory } from '../../api/models/ModelCategory'
@@ -10,6 +10,7 @@ import { stringToVariations, variationsToString } from './variation'
 import { ct, snapshottoarray, toJsStr, beautify, logo, logt } from '../../utils/logutils'
 import { actionsData } from '../../stories/product.storiests'
 import { createBadge } from '../../utils/bootstrapUtils'
+import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
 // import { product } from './ProductComponent'
 export interface ProductModelMeta {
     product: ModelProduct,

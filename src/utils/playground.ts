@@ -1,5 +1,5 @@
 // Dont destruce they make true copies
-import { ModelVariation } from '../../ModelProduct'
+import { ModelVariation } from '../api/models/ModelProduct'
 
 
 function isValidVariation(params: string) {

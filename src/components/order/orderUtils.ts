@@ -2,7 +2,7 @@ import React from 'react'
 import { ModelOrder } from './../../api/models/ModelOrder'
 import { beautify } from './../../utils/logutils'
 import { Row, Col, Container } from 'react-bootstrap'
-import { ModelProduct, ModelVariation } from '../../../ModelProduct'
+import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
 import { data } from '../../api/databaseApi/data'
 
 // calculate price 
