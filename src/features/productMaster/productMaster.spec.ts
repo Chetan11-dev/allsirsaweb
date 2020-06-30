@@ -3,7 +3,7 @@ import { initalReducerState, stateUpdate } from '../../utils/reducertestutils'
 import productMasterReducer, { initialState, updateState, ProductMasterState, addProduct } from './productMasterSlice'
 import { data } from '../../api/databaseApi/data'
 import { ProductModelMeta } from '../../components/product/Product'
-import { isValidProduct, isAnyEmpty, defaultProduct, purifyState, getDefaultProduct } from './productMasterSliceUtils'
+import { isValidProduct, isAnyEmpty, defaultProduct, purifyState, getInitialProduct } from './productMasterSliceUtils'
 import { CorrectProduct } from '../../stories/product.storiests'
 
 
@@ -76,10 +76,10 @@ describe('Product Master test', () => {
 
     })
     it('getproduct test', () => {
-        expect(isValidProduct(getDefaultProduct())).toBeFalsy()
+        expect(isValidProduct(getInitialProduct())).toBeFalsy()
 
-        expect(isValidProduct({ ...getDefaultProduct(), product: { ...corectproduct.product, title: 'Apple', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeTruthy()
-        expect(isValidProduct({ ...getDefaultProduct(), product: { ...corectproduct.product, title: '   ', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeFalsy()
+        expect(isValidProduct({ ...getInitialProduct(), product: { ...corectproduct.product, title: 'Apple', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeTruthy()
+        expect(isValidProduct({ ...getInitialProduct(), product: { ...corectproduct.product, title: '   ', variations: [{ price: 5, value: 4 }], unit: ' g ', category: '-', subcategory: '=', } })).toBeFalsy()
     })
     it('purifyState test ', () => {
         expect(purifyState({ inCorrect: [{ product: { ...corectproduct.product, title: '      ', variations: [], unit: '   ' } }, { ...corectproduct }], pending: [{ ...corectproduct }] }).pending.length).toBe(2)

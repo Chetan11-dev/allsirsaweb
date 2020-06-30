@@ -4,7 +4,7 @@ import React from 'react'
 import Product from '../components/product/Product'
 export {
 
-  Defaultproduct, CorrectProduct,
+  Initialproduct, CorrectProduct,
   WrongProduct
 } from './product.storiests'
 

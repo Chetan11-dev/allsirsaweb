@@ -52,6 +52,6 @@ export const defaultProduct: ProductModelMeta = {
     imageFile: undefined
 }
 
-export function getDefaultProduct(): ProductModelMeta {
+export function getInitialProduct(): ProductModelMeta {
     return { ...defaultProduct }
 }

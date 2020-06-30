@@ -9,7 +9,7 @@ import { Loader } from '../features/loader/Loader'
 import { CategoryApi } from '../api/databaseApi/categoryApi'
 import { beautify } from '../utils/logutils'
 import { data } from '../api/databaseApi/data'
-import { getDefaultProduct } from '../features/productMaster/productMasterSliceUtils'
+import { getInitialProduct } from '../features/productMaster/productMasterSliceUtils'
 // import {  } from '../features/productMaster/ProductMaster';
 
 
@@ -95,9 +95,8 @@ export const CorrectProduct = () => (
     <ProductWrapper {...corectproduct} />
 )
 
-
-export const Defaultproduct = () => (
-    <ProductWrapper {...getDefaultProduct()} />
+export const Initialproduct = () => (
+    <ProductWrapper {...getInitialProduct()} />
 )
 
 export const WrongProduct = () => (
