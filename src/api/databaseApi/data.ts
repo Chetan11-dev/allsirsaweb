@@ -53,7 +53,7 @@ const products: ModelProduct[] = [{
     subcategory: 'face care',
     productimage: 'https://firebasestorage.googleapis.com/v0/b/allsirsa.appspot.com/o/15da1e5f-e87e-4d16-b83f-f39f556018fc?alt=media&token=c69e4bc8-0a6f-478e-8b1e-c333df05f0c0',
     sid: '2',
-    title: 'himalya face pack'
+    title: 'Himalya face pack'
 }, {
     category: 'biscuits, snacks & chocolates',
     id: '13',

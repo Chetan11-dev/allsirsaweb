@@ -42,6 +42,7 @@
     "storybookcustom": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -s public",
     "ris": "npm install && npm run start",
+    "sis": "npm install && npm run storybook",
     "rs": "npm run start",
     "ni": "npm install ",
     "gp": "git push ",

@@ -5,6 +5,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import { ModelProduct, ModelVariation } from '../../api/models/ModelProduct'
 import { calculatePrice, calculateVariant, variation } from './orderUtils'
 import { BadgeInfo, createBadge, createBadges } from '../../utils/bootstrapUtils'
+import { diffDate, getFixedDate, diffDateToStr } from '../../utils/dateUtils/dateUtils'
 
 
 
@@ -16,11 +17,11 @@ function bracket(o: any) {
     return `(${o})`
 }
 
-
 export const Order = ({ order, onChange, order: { product: { category, variations, unit, subcategory, title, productimage, }, units, status, createdAt } }: Props) => {
 
     const calPrice = calculatePrice(order)
-    const bs: BadgeInfo[] = [{ info: status, variant: 'warning' }, { info: calculateVariant(variation(order), unit) }]
+    const bs: BadgeInfo[] = [{ info: status, variant: 'warning' }, { info: calculateVariant(variation(order), unit,), variant: 'success', }, { info: `Quantity : ${units}`, variant: 'success', }]
+    const time = diffDateToStr(createdAt.toDate(), getFixedDate())
 
     return (
         <div className="container border border-primary ">
@@ -28,13 +29,13 @@ export const Order = ({ order, onChange, order: { product: { category, variation
                 <div>
                     <img className='h-50 w-50 border border-primary ' src={productimage} alt="" />
                 </div>
-                <div className="col border border-primary  ">
+                <div className="col border border-primary">
                     <div className="row justify-content-between m-0 p-0">
-                        <h5>{title + bracket(units)}</h5>
+                        <h5>{title + ' ' + bracket(units)}</h5>
                         <h5>{'₹' + calPrice}</h5>
                     </div>
                     <div className='row m-0 p-0'>
-                        <p>dd</p>
+                        <p>{time}</p>
                     </div>
                 </div>
             </div>

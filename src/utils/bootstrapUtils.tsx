@@ -7,7 +7,7 @@ export interface BadgeInfo {
 }
 
 export function createBadge(b: BadgeInfo) {
-    return (<span className={`m-2 badge badge-pill badge-${b.variant ?? 'light'}`}>{b.info}</span>)
+    return (<span className={`m-2  badge badge-pill badge-${b.variant ?? 'light'}`}>{b.info}</span>)
 }
 
 

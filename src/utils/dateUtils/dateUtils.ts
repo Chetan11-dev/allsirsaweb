@@ -15,20 +15,20 @@ export function diffDate(small: Date, big: Date = new Date() //current date time
     // console.log({ date: small, now: big, diffDate, Difference_In_Days: Days, Difference_In_Mins: Mins, Difference_In_Hours: Hours })
 
     var result = ''
-    
+
     if (Mins < 60) {
         result = Mins + 'm'
     } else if (Hours < 24) result = diffDate.getMinutes() + 'h'
     else result = Days + 'd'
- 
+
     return { result, Days, Mins, Hours }
 }
 
 export function diffDateToStr(small: Date, big: Date = new Date() //current date time 
 ) {
-    return diffDate(small,big).result
+    return diffDate(small, big).result + ' ago'
 }
 
 export function getFixedDate() {
-    return  new Date('06/28/2020') 
+    return new Date('06/28/2020')
 }
